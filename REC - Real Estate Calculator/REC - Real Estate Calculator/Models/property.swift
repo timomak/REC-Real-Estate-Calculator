@@ -9,15 +9,15 @@
 import UIKit
 
 class Property {
-    var name = "Item 1"
-    var buyingPrice: Double = 0.0
-    var rent: Double = 0.0
-    var buildingTax: Double = 0.0
-    var propertyTax: Double = 0.0
-    var yearlyFees: Double = 0.0
-    var valueGrowth: Double = 0.0
-    var squaredFeet: Double = 0.0
-    
+    // Property's Properties ;)
+    var name: String
+    var buyingPrice: Double
+    var rent: Double
+    var buildingTax: Double
+    var propertyTax: Double
+    var yearlyFees: Double
+    var valueGrowth: Double
+    var squaredFeet: Double
     
     init(name: String, buyingPrice: Double, rent: Double, buildingTax: Double, propertyTax: Double, yearlyFees: Double, valueGrowth: Double, squaredFeet: Double) {
         self.name = name
@@ -29,7 +29,7 @@ class Property {
         self.valueGrowth = valueGrowth
         self.squaredFeet = squaredFeet
     }
-    // Function to return property in JSON format to be able to store it with UserDefaults
+    // Function to return property in JSON format to be able to store it with Firebase
     func getDictionary() -> [String: [String: Double]] {
         return [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth, "squaredFeet":squaredFeet]]
     }

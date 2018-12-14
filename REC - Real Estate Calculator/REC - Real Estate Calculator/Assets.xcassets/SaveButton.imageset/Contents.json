@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "SaveButton.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "SaveButton-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "+-2.png",
+      "filename" : "SaveButton-2.png",
       "scale" : "3x"
     }
   ],

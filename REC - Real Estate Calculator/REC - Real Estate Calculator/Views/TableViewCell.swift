@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class PropertyListCell: UITableViewCell {
     // Variables that can be changed within the table view controller
 
     // Property Name Label

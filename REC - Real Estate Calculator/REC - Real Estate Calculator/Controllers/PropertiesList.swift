@@ -12,6 +12,7 @@ class PropertiesList: UIViewController {
     // Cell ID
     private let cellId = "cellId"
     
+    // Array of Properties used to create Cells
     var properties = [Property]()
     
     // Creating table view
@@ -90,13 +91,14 @@ class PropertiesList: UIViewController {
         tableView.anchor(top: navbar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
         // Register Table View Cells
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(PropertyListCell.self, forCellReuseIdentifier: cellId)
         tableView.delegate = self
         tableView.dataSource = self
         
         // Table View Properties
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.allowsSelection = false
     }
     
     @objc private func newPropertyButtonPressed() {
@@ -114,7 +116,7 @@ extension PropertiesList: UITableViewDataSource {
     // Table View Cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create Cells one by one using this as a blueprint.
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PropertyListCell
         
         // Set the cell label text
         cell.propertyName.text = properties[indexPath.row].name
