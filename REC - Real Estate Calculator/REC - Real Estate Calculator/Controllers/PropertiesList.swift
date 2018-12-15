@@ -58,8 +58,8 @@ class PropertiesList: UIViewController {
         addTableView()
         
         // Testing property class
-        var newProperty = Property(name: "Home 1", buyingPrice: 1000000, rent: 4500, buildingTax: 1000, propertyTax: 1000, yearlyFees: 300, valueGrowth: 0.6, squaredFeet: 2000)
-        print(newProperty.getDictionary())
+        let newProperty = Property(name: "Home 1", buyingPrice: 1000000, rent: 4500, buildingTax: 1000, propertyTax: 1000, yearlyFees: 300, valueGrowth: 0.6, squaredFeet: 2000)
+//        print(newProperty.getDictionary())
         properties.append(newProperty)
     }
     

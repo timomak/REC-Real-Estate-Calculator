@@ -74,7 +74,7 @@ class PropertyListCell: UITableViewCell {
         addSubview(cellBackground)
         
         // Cell container size and position in cell
-        cellBackground.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 390, height: 67))
+        cellBackground.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: bounds.width + 20, height: 67))
         cellBackground.centerOfView(to: self)
         
         // Adding and centering label within cell

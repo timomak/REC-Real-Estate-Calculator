@@ -12,7 +12,7 @@ class Login: UIViewController {
     // Title
     private let brandName: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(name: "Avenir Next", size: 80)
+        textView.font = UIFont(name: "Avenir Next", size: 60)
         textView.text = "Real Estate"
         textView.backgroundColor = nil
         textView.textAlignment = .center
@@ -25,7 +25,7 @@ class Login: UIViewController {
     // Subtitle
     private let subTitle: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(name: "Avenir Next", size: 60)
+        textView.font = UIFont(name: "Avenir Next", size: 40)
         textView.backgroundColor = nil
         textView.textAlignment = .center
         textView.isEditable = false

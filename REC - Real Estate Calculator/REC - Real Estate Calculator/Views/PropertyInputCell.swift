@@ -30,8 +30,6 @@ class PropertyInputCell: UITableViewCell {
         textView.font = UIFont.systemFont(ofSize: 23)
         textView.backgroundColor = nil
         textView.textAlignment = .center
-//        textView.isEditable = false
-//        textView.isSelectable = false
         textView.isScrollEnabled = false
         textView.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return textView

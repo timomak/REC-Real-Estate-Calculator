@@ -12,10 +12,6 @@ class NewProperty: UIViewController {
     // Cell ID
     private var cellId = "property"
     
-    // TODO: Instead of having table view, have a scrollable view.
-    // Creating table view
-    private var tableView = UITableView()
-    
     // Array to fill up Table View
     private var valueToInput = ["Name", "Cost", "Rent", "HOA Dues", "Property Tax", "Yearly Fees", "Value Growth", "Squared Ft"]
     
@@ -64,12 +60,15 @@ class NewProperty: UIViewController {
         return newImage
     }()
     
+    // Adding labels and Inputs
+    private let valueView = ValueView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7409107685, green: 0.6965670586, blue: 1, alpha: 1)
         addStyling()
-        addTableView()
+        valueView.addView(superview: view, toView: coolShapedBackground)
+        hideKeyboardWhenTappedAround()
     }
     
     func addStyling() {
@@ -90,25 +89,7 @@ class NewProperty: UIViewController {
         view.addSubview(coolShapedBackground)
         coolShapedBackground.anchor(top: houseImage.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }
-    
-    func addTableView() {
-        // Add to Table View to View
-        view.addSubview(tableView)
-        
-        // Table View Size
-        tableView.anchor(top: coolShapedBackground.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 80, left: 10, bottom: 0, right: 10))
-        
-        // Register Table View Cells
-        tableView.register(PropertyInputCell.self, forCellReuseIdentifier: cellId)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        // Table View Properties
-        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.allowsSelection = false
-    }
-    
+
     private func checkInput(){
         // Check if the input is given correcly
         
@@ -123,29 +104,4 @@ class NewProperty: UIViewController {
         
     }
 
-}
-
-extension NewProperty: UITableViewDataSource {
-    // Table View Rows
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return valueToInput.count
-    }
-    // Table View Cells
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Create Cells one by one using this as a blueprint.
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PropertyInputCell
-        // Set the cell label text
-        cell.value.text = valueToInput[indexPath.row] + ":"
-        cell.input.text = valueToInput[indexPath.row] + "..."
-        
-        // Push your cell to the table view
-        return cell
-    }
-}
-
-extension NewProperty: UITableViewDelegate {
-    // Table View Cell Styling
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
 }

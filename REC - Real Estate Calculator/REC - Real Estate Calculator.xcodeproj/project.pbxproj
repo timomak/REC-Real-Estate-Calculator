@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F39E074921C4B7E700F3846A /* ValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E074821C4B7E700F3846A /* ValueView.swift */; };
 		F3D40F2B21C34A8D0025640A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2A21C34A8D0025640A /* AppDelegate.swift */; };
 		F3D40F2D21C34A8D0025640A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2C21C34A8D0025640A /* Login.swift */; };
 		F3D40F3221C34A8E0025640A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D40F3121C34A8E0025640A /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F39E074821C4B7E700F3846A /* ValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueView.swift; sourceTree = "<group>"; };
 		F3D40F2721C34A8D0025640A /* REC - Real Estate Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "REC - Real Estate Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D40F2A21C34A8D0025640A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3D40F2C21C34A8D0025640A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				F3D40F4621C376AE0025640A /* TableViewCell.swift */,
 				F3D40F4D21C397DE0025640A /* PropertyInputCell.swift */,
+				F39E074821C4B7E700F3846A /* ValueView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F39E074921C4B7E700F3846A /* ValueView.swift in Sources */,
 				F3D40F4721C376AE0025640A /* TableViewCell.swift in Sources */,
 				F3D40F4421C3588F0025640A /* PropertiesList.swift in Sources */,
 				F3D40F4C21C38C100025640A /* NewProperty.swift in Sources */,
@@ -337,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAZ2DLKCVY;
 				INFOPLIST_FILE = "REC - Real Estate Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,6 +360,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAZ2DLKCVY;
 				INFOPLIST_FILE = "REC - Real Estate Calculator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
