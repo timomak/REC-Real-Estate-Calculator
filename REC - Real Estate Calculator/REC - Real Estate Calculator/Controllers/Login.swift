@@ -9,9 +9,12 @@
 import UIKit
 // To be able to sign in:
 import Firebase
+import FirebaseDatabase
 import GoogleSignIn
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    var ref: DatabaseReference!
     
     // Title
     private let brandName: UITextView = {
@@ -118,10 +121,32 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             self.username = Auth.auth().currentUser?.displayName
             self.email = Auth.auth().currentUser?.email
             self.uid = Auth.auth().currentUser?.uid
-            print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
+            print("user successfully signed in through GOOGLE! uid:\(String(describing: Auth.auth().currentUser!.email))")
             
+            self.readPropertiesFromDatabase()
             self.loadNextView()
         }
+    }
+    
+    func readPropertiesFromDatabase() {
+        let userUID = Auth.auth().currentUser?.uid
+        // print("Setting query Path and saving firebase data Locally. User Id : ", userUID!)
+        
+        // Path to user's properties
+        let query = Database.database().reference().child("users").child(userUID!).child("properties")
+        // Using the path find the properties.
+        query.observe(.value, with: { snapshot in
+            // If there is data already, make the data into an array and save it as userdefaults.
+            if let snapshotValue = snapshot.value as? [String: [String:[String:Double]]] {
+                // print("Snapshot value as super array: ", snapshotValue)
+                var dataProperties = snapshotValue as! [String: [String:[String:Double]]]
+                print("dataProperties value as super array: ", dataProperties)
+                UserDefaults.standard.set(dataProperties, forKey: "properties")
+                // Making sure that the rest of the app knows that there are properties already in the app.
+                UserDefaults.standard.set(true, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
+            }
+        })
     }
 }
 

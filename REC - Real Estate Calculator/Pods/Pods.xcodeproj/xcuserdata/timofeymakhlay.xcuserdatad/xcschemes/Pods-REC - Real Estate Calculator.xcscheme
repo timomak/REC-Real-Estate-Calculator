@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6962F22303FBDD93C32ABB7A2F9E8B4"
+               BlueprintIdentifier = "31F985E8F1A4BE2526B0048AC2ECAE67"
                BuildableName = "Pods_REC___Real_Estate_Calculator.framework"
                BlueprintName = "Pods-REC - Real Estate Calculator"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D6962F22303FBDD93C32ABB7A2F9E8B4"
+            BlueprintIdentifier = "31F985E8F1A4BE2526B0048AC2ECAE67"
             BuildableName = "Pods_REC___Real_Estate_Calculator.framework"
             BlueprintName = "Pods-REC - Real Estate Calculator"
             ReferencedContainer = "container:Pods.xcodeproj">

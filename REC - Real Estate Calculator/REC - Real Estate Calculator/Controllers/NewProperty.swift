@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class NewProperty: UIViewController {
-    // Cell ID
-    private var cellId = "property"
     
-    // Array to fill up Table View
-    private var valueToInput = ["Name", "Cost", "Rent", "HOA Dues", "Property Tax", "Yearly Fees", "Value Growth", "Squared Ft"]
+    // Connect to Firebase Database
+    var ref: DatabaseReference!
     
     // Property Values track
     private var name: String = ""
@@ -91,6 +91,7 @@ class NewProperty: UIViewController {
     }
 
     @objc private func cancelButtonPressed() {
+        PropertiesList().refreshDataInTable()
         // Remove current view
         self.dismiss(animated: true, completion: nil)
     }
@@ -99,8 +100,21 @@ class NewProperty: UIViewController {
         // Save Property
         
         // TODO: Add conditional to check if is editing or creating new
-        var newProperty = valueView.createPropertyModel()
+        let newProperty = valueView.createPropertyModel()
         print(newProperty.getDictionary())
+        
+        // Get User ID
+        let userUID = Auth.auth().currentUser?.uid
+        
+        // Send Property to Database
+        sendPropertyToDatabase(userId: userUID!, property: newProperty.getDictionary())
+        
+    }
+    
+    func sendPropertyToDatabase(userId: String, property: [String: [String: Double]]) {
+        // Saving to Database
+        Database.database().reference().child("users").child(userId).child("properties").childByAutoId().setValue(property)
+//        print("Properties: ", property)
     }
 
 }

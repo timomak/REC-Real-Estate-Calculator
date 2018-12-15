@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class PropertiesList: UIViewController {
+    // Connect to Firebase Database
+    var ref: DatabaseReference!
+    
+    
     // Cell ID
     private let cellId = "cellId"
     
@@ -16,7 +22,7 @@ class PropertiesList: UIViewController {
     var properties = [Property]()
     
     // Creating table view
-    private var tableView = UITableView()
+    var tableView = UITableView()
     
     // Creating Navbar
     private let navbar: UIView = {
@@ -57,11 +63,17 @@ class PropertiesList: UIViewController {
         addCustomNavbar()
         addTableView()
         
-        // Testing property class
-        let newProperty = Property(name: "Home 1", buyingPrice: 1000000, rent: 4500, buildingTax: 1000, propertyTax: 1000, yearlyFees: 300, valueGrowth: 0.6, squaredFeet: 2000)
-//        print(newProperty.getDictionary())
-        properties.append(newProperty)
+        
+        // Returns: dataProperties
+        if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
+            // Can unwrap an populate property list
+            if UserDefaults.standard.dictionary(forKey: "properties") != nil {
+                unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
+            }
+        }
     }
+    
+    
     
     func addCustomNavbar() {
         // Adding Navbar View
@@ -99,11 +111,91 @@ class PropertiesList: UIViewController {
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.allowsSelection = false
+        var refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    @objc func refreshData(_ sender: Any) {
+        refreshDataInTable()
+        tableView.refreshControl?.endRefreshing()
+//        tableView.activityIndicatorView.stopAnimating()
+        
+    }
+    
+    func refreshDataInTable() {
+        // Reload data
+        // Returns: dataProperties
+        Login().readPropertiesFromDatabase()
+        properties = []
+        if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
+            // Can unwrap an populate property list
+            if UserDefaults.standard.dictionary(forKey: "properties") != nil {
+                unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
+            }
+        }
+        tableView.reloadData()
     }
     
     @objc private func newPropertyButtonPressed() {
         let newViewController = NewProperty()
         self.present(newViewController, animated: true)
+    }
+    
+    func unwrapDictionary(toUnwrap: [String: [String : [String : Double]]]) {
+        print("Starting Unwrapping of dictionary\n")
+        var id: String = String()
+        var name: String = String()
+        var buyingPrice: Double = Double()
+        var rent: Double = Double()
+        var buildingTax: Double = Double()
+        var propertyTax: Double = Double()
+        var yearlyFees: Double = Double()
+        var valueGrowth: Double = Double()
+        var squaredFeet: Double = Double()
+        
+        print("Dictionary: ", toUnwrap)
+        for (propertyId, dictionary) in toUnwrap {
+            print("Property Id: ", propertyId)
+            id = propertyId
+            for (propertyName, dict) in dictionary {
+                name = propertyName
+                for (nameOfValue, value) in dict {
+                    if nameOfValue == "price" {
+                        buyingPrice = value
+                    } else if nameOfValue == "rent" {
+                        rent = value
+                    }
+                    else if nameOfValue == "buildingTax" {
+                        buildingTax = value
+                    }
+                    else if nameOfValue == "propertyTax" {
+                        propertyTax = value
+                    }
+                    else if nameOfValue == "fees" {
+                        yearlyFees = value
+                    }
+                    else if nameOfValue == "growth" {
+                        valueGrowth = value
+                    }
+                    else if nameOfValue == "squaredFeet" {
+                        squaredFeet = value
+                    }
+                    print("Name: \(name) [\(nameOfValue): \(value)]")
+                }
+            }
+            // append here
+            let unwrappedProperty = Property(
+                name: name,
+                buyingPrice: buyingPrice,
+                rent: rent,
+                buildingTax: buildingTax,
+                propertyTax: propertyTax,
+                yearlyFees: yearlyFees,
+                valueGrowth: valueGrowth,
+                squaredFeet: squaredFeet)
+            unwrappedProperty.id = id
+            properties.append(unwrappedProperty)
+        }
     }
 }
 

@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_REC___Real_Estate_Calculator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_REC___Real_Estate_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.debug.xcconfig"; sourceTree = "<group>"; };
 		F39E074821C4B7E700F3846A /* ValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueView.swift; sourceTree = "<group>"; };
@@ -243,6 +243,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -253,6 +254,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

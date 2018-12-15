@@ -18,6 +18,7 @@ class Property {
     var yearlyFees: Double
     var valueGrowth: Double
     var squaredFeet: Double
+    var id: String = ""
     
     init(name: String, buyingPrice: Double, rent: Double, buildingTax: Double, propertyTax: Double, yearlyFees: Double, valueGrowth: Double, squaredFeet: Double) {
         self.name = name
@@ -32,5 +33,10 @@ class Property {
     // Function to return property in JSON format to be able to store it with Firebase
     func getDictionary() -> [String: [String: Double]] {
         return [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth, "squaredFeet":squaredFeet]]
+    }
+    
+    // Function to return property in JSON format to be able to store it with Firebase
+    func getDictionaryWithId() -> [String: [String: [String: Double]]] {
+        return [id: [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth, "squaredFeet":squaredFeet]]]
     }
 }

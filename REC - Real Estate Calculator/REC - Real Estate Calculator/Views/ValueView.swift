@@ -414,13 +414,17 @@ class ValueView: UIView {
         // Create Property
         let newProperty = Property(
             name: nameInput.text ?? "No Name",
-            buyingPrice: Double(costInput.text!) ?? 0,
-            rent: Double(rentInput.text!) ?? 0,
-            buildingTax: Double(buildingTaxInput.text!) ?? 0,
-            propertyTax: Double(propertyTaxInput.text!) ?? 0,
-            yearlyFees: Double(yearlyFeesInput.text!) ?? 0,
-            valueGrowth: Double(valueGrowthInput.text!) ?? 0,
-            squaredFeet: Double(squaredFeetInput.text!) ?? 0)
+            buyingPrice: Double(costInput.text!) ?? 1,
+            rent: Double(rentInput.text!) ?? 1,
+            buildingTax: Double(buildingTaxInput.text!) ?? 1,
+            propertyTax: Double(propertyTaxInput.text!) ?? 1,
+            yearlyFees: Double(yearlyFeesInput.text!) ?? 1,
+            valueGrowth: Double(valueGrowthInput.text!) ?? 1,
+            squaredFeet: Double(squaredFeetInput.text!) ?? 1)
+        
+        if newProperty.name == "" || newProperty.name == nil {
+            newProperty.name = "No Name"
+        }
         return newProperty
     }
 
