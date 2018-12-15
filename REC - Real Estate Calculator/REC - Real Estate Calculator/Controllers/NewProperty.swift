@@ -90,10 +90,6 @@ class NewProperty: UIViewController {
         coolShapedBackground.anchor(top: houseImage.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }
 
-    private func checkInput(){
-        // Check if the input is given correcly
-        
-    }
     @objc private func cancelButtonPressed() {
         // Remove current view
         self.dismiss(animated: true, completion: nil)
@@ -102,6 +98,9 @@ class NewProperty: UIViewController {
     @objc private func saveButtonPressed() {
         // Save Property
         
+        // TODO: Add conditional to check if is editing or creating new
+        var newProperty = valueView.createPropertyModel()
+        print(newProperty.getDictionary())
     }
 
 }
