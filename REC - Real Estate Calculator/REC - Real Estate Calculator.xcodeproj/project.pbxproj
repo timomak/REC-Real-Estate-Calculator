@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F27A5855C00793963A5A30B /* Pods_REC___Real_Estate_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */; };
 		F39E074921C4B7E700F3846A /* ValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E074821C4B7E700F3846A /* ValueView.swift */; };
+		F39E074B21C4C84D00F3846A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F39E074A21C4C84D00F3846A /* GoogleService-Info.plist */; };
 		F3D40F2B21C34A8D0025640A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2A21C34A8D0025640A /* AppDelegate.swift */; };
 		F3D40F2D21C34A8D0025640A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2C21C34A8D0025640A /* Login.swift */; };
 		F3D40F3221C34A8E0025640A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D40F3121C34A8E0025640A /* Assets.xcassets */; };
@@ -20,7 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_REC___Real_Estate_Calculator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.release.xcconfig"; sourceTree = "<group>"; };
+		DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.debug.xcconfig"; sourceTree = "<group>"; };
 		F39E074821C4B7E700F3846A /* ValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueView.swift; sourceTree = "<group>"; };
+		F39E074A21C4C84D00F3846A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D40F2721C34A8D0025640A /* REC - Real Estate Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "REC - Real Estate Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D40F2A21C34A8D0025640A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3D40F2C21C34A8D0025640A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -39,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F27A5855C00793963A5A30B /* Pods_REC___Real_Estate_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14ED3E3CF953E636AD01C88B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F082A689EFE3ECD5F1DA49B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */,
+				57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F3D40F1E21C34A8C0025640A = {
 			isa = PBXGroup;
 			children = (
 				F3D40F2921C34A8D0025640A /* REC - Real Estate Calculator */,
 				F3D40F2821C34A8D0025640A /* Products */,
+				9F082A689EFE3ECD5F1DA49B /* Pods */,
+				14ED3E3CF953E636AD01C88B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,24 +90,17 @@
 		F3D40F2921C34A8D0025640A /* REC - Real Estate Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F3D40F2A21C34A8D0025640A /* AppDelegate.swift */,
 				F3D40F4821C3838D0025640A /* Models */,
 				F3D40F4521C3769F0025640A /* Views */,
 				F3D40F4121C3584F0025640A /* Controllers */,
-				F3D40F2A21C34A8D0025640A /* AppDelegate.swift */,
 				F3D40F4221C358600025640A /* Extentions */,
 				F3D40F3121C34A8E0025640A /* Assets.xcassets */,
 				F3D40F3321C34A8E0025640A /* LaunchScreen.storyboard */,
+				F39E074A21C4C84D00F3846A /* GoogleService-Info.plist */,
 				F3D40F3621C34A8E0025640A /* Info.plist */,
-				F3D40F3E21C352FF0025640A /* Fonts */,
 			);
 			path = "REC - Real Estate Calculator";
-			sourceTree = "<group>";
-		};
-		F3D40F3E21C352FF0025640A /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F3D40F4121C3584F0025640A /* Controllers */ = {
@@ -126,9 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3D40F3921C34A8E0025640A /* Build configuration list for PBXNativeTarget "REC - Real Estate Calculator" */;
 			buildPhases = (
+				1C2839D186DB7EBC75DF61F8 /* [CP] Check Pods Manifest.lock */,
 				F3D40F2321C34A8D0025640A /* Sources */,
 				F3D40F2421C34A8D0025640A /* Frameworks */,
 				F3D40F2521C34A8D0025640A /* Resources */,
+				5A6E9F123B26C550D1473D57 /* [CP] Embed Pods Frameworks */,
+				66B6ADCA7FAE447771340AB3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,10 +201,88 @@
 			files = (
 				F3D40F3521C34A8E0025640A /* LaunchScreen.storyboard in Resources */,
 				F3D40F3221C34A8E0025640A /* Assets.xcassets in Resources */,
+				F39E074B21C4C84D00F3846A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C2839D186DB7EBC75DF61F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-REC - Real Estate Calculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A6E9F123B26C550D1473D57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66B6ADCA7FAE447771340AB3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3D40F2321C34A8D0025640A /* Sources */ = {
@@ -332,6 +432,7 @@
 		};
 		F3D40F3A21C34A8E0025640A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,6 +452,7 @@
 		};
 		F3D40F3B21C34A8E0025640A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

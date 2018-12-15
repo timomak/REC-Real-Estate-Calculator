@@ -7,8 +7,11 @@
 //
 
 import UIKit
+// To be able to sign in:
+import Firebase
+import GoogleSignIn
 
-class Login: UIViewController {
+class Login: UIViewController, GIDSignInUIDelegate {
     // Title
     private let brandName: UITextView = {
         let textView = UITextView()
@@ -37,20 +40,28 @@ class Login: UIViewController {
         return textView
     }()
     
-    //Creating Google Sign in button
-    private let signInButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.layer.cornerRadius = 30
-        button.setImage(#imageLiteral(resourceName: "GoogleSignInButton"), for: .normal)
-        button.imageView?.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(loadNextView), for: .touchUpInside)
-        return button
-    }()
+    var isSignedIn = false
+    
+    var username: String?
+    var email: String?
+    var uid: String?
+    
+//    //Creating Google Sign in button
+//    private let signInButton: UIButton = {
+//        let button = UIButton()
+//        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        button.layer.cornerRadius = 30
+//        button.setImage(#imageLiteral(resourceName: "GoogleSignInButton"), for: .normal)
+//        button.imageView?.contentMode = .scaleToFill
+//        button.addTarget(self, action: #selector(loadNextView), for: .touchUpInside)
+//        return button
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7333333333, green: 0.6980392157, blue: 1, alpha: 1)
+        
+        addGoogleButton()
         
         // Adding Title
         view.addSubview(brandName)
@@ -60,17 +71,62 @@ class Login: UIViewController {
         view.addSubview(subTitle)
         subTitle.anchor(top: brandName.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
         
-        // Adding Sign in Button
-        view.addSubview(signInButton)
-        signInButton.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.bounds.width / 1.2, height: view.bounds.height / 16))
-        signInButton.centerHorizontalOfView(to: view)
+//        // Adding Sign in Button
+//        view.addSubview(signInButton)
+//        signInButton.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.bounds.width / 1.2, height: view.bounds.height / 16))
+//        signInButton.centerHorizontalOfView(to: view)
+        
+    }
+    func addGoogleButton() {
+        // Configure Google Sign In
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
+        
+        // Add Google button
+        let googleButton = GIDSignInButton()
+        googleButton.layer.cornerRadius = 10
+        googleButton.addTarget(self, action: #selector(loadNextView), for: .touchUpInside)
+        view.addSubview(googleButton)
+        googleButton.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.bounds.width / 1.2, height: view.bounds.height / 16))
+        googleButton.centerHorizontalOfView(to: view)
         
     }
 
     @objc private func loadNextView() {
+        print("Button pressed")
         // Present Next View
-        let newViewController = PropertiesList()
-        self.present(newViewController, animated: true)
+        if isSignedIn == true {
+            let newViewController = PropertiesList()
+            self.present(newViewController, animated: true)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            print("Problem at signing in with google with error : \(error)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+        
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Problem at signing in with google in Auth with error : \(error)")
+                return
+            }
+            // User is signed in
+            self.isSignedIn = true
+            
+            self.username = Auth.auth().currentUser?.displayName
+            self.email = Auth.auth().currentUser?.email
+            self.uid = Auth.auth().currentUser?.uid
+            print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
+        }
     }
 }
 
