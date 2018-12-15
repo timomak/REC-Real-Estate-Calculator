@@ -11,7 +11,8 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class Login: UIViewController, GIDSignInUIDelegate {
+class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+    
     // Title
     private let brandName: UITextView = {
         let textView = UITextView()
@@ -28,7 +29,7 @@ class Login: UIViewController, GIDSignInUIDelegate {
     // Subtitle
     private let subTitle: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(name: "Avenir Next", size: 40)
+        textView.font = UIFont(name: "Avenir Next", size: 50)
         textView.backgroundColor = nil
         textView.textAlignment = .center
         textView.isEditable = false
@@ -46,20 +47,11 @@ class Login: UIViewController, GIDSignInUIDelegate {
     var email: String?
     var uid: String?
     
-//    //Creating Google Sign in button
-//    private let signInButton: UIButton = {
-//        let button = UIButton()
-//        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        button.layer.cornerRadius = 30
-//        button.setImage(#imageLiteral(resourceName: "GoogleSignInButton"), for: .normal)
-//        button.imageView?.contentMode = .scaleToFill
-//        button.addTarget(self, action: #selector(loadNextView), for: .touchUpInside)
-//        return button
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7333333333, green: 0.6980392157, blue: 1, alpha: 1)
+//        GIDSignIn.sharedInstance().signOut()
+//        GIDSignIn.sharedInstance().disconnect()
         
         addGoogleButton()
         
@@ -71,15 +63,15 @@ class Login: UIViewController, GIDSignInUIDelegate {
         view.addSubview(subTitle)
         subTitle.anchor(top: brandName.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
         
-//        // Adding Sign in Button
-//        view.addSubview(signInButton)
-//        signInButton.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 20, right: 0), size: .init(width: view.bounds.width / 1.2, height: view.bounds.height / 16))
-//        signInButton.centerHorizontalOfView(to: view)
-        
     }
     func addGoogleButton() {
         // Configure Google Sign In
         GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        // automatically sign in the user.
+        GIDSignIn.sharedInstance().signInSilently()
+        
         GIDSignIn.sharedInstance().signIn()
         
         // Add Google button
@@ -93,7 +85,7 @@ class Login: UIViewController, GIDSignInUIDelegate {
     }
 
     @objc private func loadNextView() {
-        print("Button pressed")
+//        print("Button pressed")
         // Present Next View
         if isSignedIn == true {
             let newViewController = PropertiesList()
@@ -122,10 +114,13 @@ class Login: UIViewController, GIDSignInUIDelegate {
             // User is signed in
             self.isSignedIn = true
             
+            print("User Logged in maybe")
             self.username = Auth.auth().currentUser?.displayName
             self.email = Auth.auth().currentUser?.email
             self.uid = Auth.auth().currentUser?.uid
             print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
+            
+            self.loadNextView()
         }
     }
 }
