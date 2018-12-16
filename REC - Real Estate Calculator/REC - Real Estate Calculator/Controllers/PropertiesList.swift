@@ -197,6 +197,9 @@ class PropertiesList: UIViewController {
             properties.append(unwrappedProperty)
         }
     }
+    func deleteProperty(userId: String, propertyToDelete: Property) {
+    Database.database().reference().child("users").child(userId).child("properties").child(propertyToDelete.id).removeValue()
+    }
 }
 
 extension PropertiesList: UITableViewDataSource {
@@ -222,6 +225,15 @@ extension PropertiesList: UITableViewDataSource {
         let newViewController = EditProperty()
         newViewController.property = properties[indexPath.row]
         self.present(newViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            deleteProperty(userId: (Auth.auth().currentUser?.uid)!, propertyToDelete: properties[indexPath.row])
+            self.properties.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 

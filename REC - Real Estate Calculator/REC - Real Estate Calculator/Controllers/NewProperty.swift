@@ -91,9 +91,9 @@ class NewProperty: UIViewController {
     }
 
     @objc private func cancelButtonPressed() {
-        PropertiesList().refreshDataInTable()
         // Remove current view
         self.dismiss(animated: true, completion: nil)
+        PropertiesList().refreshDataInTable()
     }
     
     @objc private func saveButtonPressed() {
@@ -111,6 +111,8 @@ class NewProperty: UIViewController {
         
         // Dimiss View
         self.dismiss(animated: true, completion: nil)
+        PropertiesList().refreshDataInTable()
+
     }
     
     func sendPropertyToDatabase(userId: String, property: [String: [String: Double]]) {
