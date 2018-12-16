@@ -1,14 +1,14 @@
 //
-//  ValueView.swift
+//  EditValueView.swift
 //  REC - Real Estate Calculator
 //
-//  Created by timofey makhlay on 12/14/18.
+//  Created by timofey makhlay on 12/15/18.
 //  Copyright © 2018 Timofey Makhlay. All rights reserved.
 //
 
 import UIKit
 
-class ValueView: UIView, UITextFieldDelegate {
+class EditValueView: UIView, UITextFieldDelegate {
     // Value Label Scroll View
     private let nameValue: UITextView = {
         let textView = UITextView()
@@ -300,8 +300,8 @@ class ValueView: UIView, UITextFieldDelegate {
         cellColor.backgroundColor = #colorLiteral(red: 0.7409107685, green: 0.6965670586, blue: 1, alpha: 1)
         return cellColor
     }()
-
-    func addView(superview: UIView, toView: UIView) {
+    
+    func addView(superview: UIView, toView: UIView, property: Property) {
         // NAME
         // Adding Name TextView
         superview.addSubview(nameValue)
@@ -312,7 +312,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(nameInput)
         nameInput.delegate = self
         nameInput.anchor(top: toView.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
-//        nameInput.delegate = self as? UITextFieldDelegate
+        nameInput.text = property.name
         
         // Adding Name UnderLine
         superview.addSubview(nameInputUnderline)
@@ -328,6 +328,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(costInput)
         costInput.delegate = self
         costInput.anchor(top: nameValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        costInput.text = String(property.buyingPrice)
         
         // Adding cost UnderLine
         superview.addSubview(costInputUnderline)
@@ -344,6 +345,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(rentInput)
         rentInput.delegate = self
         rentInput.anchor(top: costValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        rentInput.text = String(property.rent)
         
         // Adding cost UnderLine
         superview.addSubview(rentInputUnderline)
@@ -359,6 +361,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(buildingTaxInput)
         buildingTaxInput.delegate = self
         buildingTaxInput.anchor(top: rentValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        buildingTaxInput.text = String(property.buildingTax)
         
         // Adding cost UnderLine
         superview.addSubview(buildingTaxInputUnderline)
@@ -374,6 +377,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(propertyTaxInput)
         propertyTaxInput.delegate = self
         propertyTaxInput.anchor(top: buildingTaxValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        propertyTaxInput.text = String(property.propertyTax)
         
         // Adding cost UnderLine
         superview.addSubview(propertyTaxInputUnderline)
@@ -389,6 +393,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(yearlyFeesInput)
         yearlyFeesInput.delegate = self
         yearlyFeesInput.anchor(top: propertyTaxValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        yearlyFeesInput.text = String(property.yearlyFees)
         
         // Adding cost UnderLine
         superview.addSubview(yearlyFeesInputUnderline)
@@ -404,6 +409,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(valueGrowthInput)
         valueGrowthInput.delegate = self
         valueGrowthInput.anchor(top: yearlyFeesValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        valueGrowthInput.text = String(property.valueGrowth)
         
         // Adding cost UnderLine
         superview.addSubview(valueGrowthInputUnderline)
@@ -420,6 +426,7 @@ class ValueView: UIView, UITextFieldDelegate {
         superview.addSubview(squaredFeetInput)
         squaredFeetInput.delegate = self
         squaredFeetInput.anchor(top: valueGrowthValue.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 45, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        squaredFeetInput.text = String(property.squaredFeet)
         
         // Adding cost UnderLine
         superview.addSubview(squaredFeetInputUnderline)
@@ -457,5 +464,5 @@ class ValueView: UIView, UITextFieldDelegate {
         }
         return newProperty
     }
-
+    
 }

@@ -1,8 +1,8 @@
 //
-//  NewProperty.swift
+//  EditProperty.swift
 //  REC - Real Estate Calculator
 //
-//  Created by timofey makhlay on 12/13/18.
+//  Created by timofey makhlay on 12/15/18.
 //  Copyright © 2018 Timofey Makhlay. All rights reserved.
 //
 
@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class NewProperty: UIViewController {
+class EditProperty: UIViewController {
+    // Property to Edit
+    var property: Property = Property(name: " ", buyingPrice: 0, rent: 0, buildingTax: 0, propertyTax: 0, yearlyFees: 0, valueGrowth: 0, squaredFeet: 0)
     
     // Connect to Firebase Database
     var ref: DatabaseReference!
@@ -32,7 +34,7 @@ class NewProperty: UIViewController {
         button.layer.cornerRadius = 30
         button.setImage(#imageLiteral(resourceName: "CancelButton"), for: .normal)
         button.imageView?.contentMode = .scaleToFill
-         button.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -43,7 +45,7 @@ class NewProperty: UIViewController {
         button.layer.cornerRadius = 30
         button.setImage(#imageLiteral(resourceName: "SaveButton"), for: .normal)
         button.imageView?.contentMode = .scaleToFill
-         button.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         return button
     }()
     // Adding House image
@@ -61,13 +63,13 @@ class NewProperty: UIViewController {
     }()
     
     // Adding labels and Inputs
-    private let valueView = ValueView()
+    private let valueView = EditValueView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7409107685, green: 0.6965670586, blue: 1, alpha: 1)
         addStyling()
-        valueView.addView(superview: view, toView: coolShapedBackground)
+        valueView.addView(superview: view, toView: coolShapedBackground, property: property)
         hideKeyboardWhenTappedAround()
     }
     
@@ -89,7 +91,7 @@ class NewProperty: UIViewController {
         view.addSubview(coolShapedBackground)
         coolShapedBackground.anchor(top: houseImage.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }
-
+    
     @objc private func cancelButtonPressed() {
         PropertiesList().refreshDataInTable()
         // Remove current view
@@ -101,21 +103,23 @@ class NewProperty: UIViewController {
         
         // TODO: Add conditional to check if is editing or creating new
         let newProperty = valueView.createPropertyModel()
-//        print(newProperty.getDictionary())
+        //        print(newProperty.getDictionary())
         
         // Get User ID
         let userUID = Auth.auth().currentUser?.uid
         
         // Send Property to Database
-        sendPropertyToDatabase(userId: userUID!, property: newProperty.getDictionary())
+        sendPropertyToDatabase(userId: userUID!, propertyToUpdate: newProperty.getDictionary())
         
         // Dimiss View
         self.dismiss(animated: true, completion: nil)
     }
     
-    func sendPropertyToDatabase(userId: String, property: [String: [String: Double]]) {
+    func sendPropertyToDatabase(userId: String, propertyToUpdate: [String: [String: Double]]) {
         // Saving to Database
-        Database.database().reference().child("users").child(userId).child("properties").childByAutoId().setValue(property)
-//        print("Properties: ", property)
+       Database.database().reference().child("users").child(userId).child("properties").child(property.id).removeValue()
+        
+        Database.database().reference().child("users").child(userId).child("properties").childByAutoId().setValue(propertyToUpdate)
+        //        print("Properties: ", property)
     }
 }

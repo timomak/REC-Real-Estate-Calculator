@@ -110,7 +110,7 @@ class PropertiesList: UIViewController {
         // Table View Properties
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         var refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
@@ -142,7 +142,7 @@ class PropertiesList: UIViewController {
     }
     
     func unwrapDictionary(toUnwrap: [String: [String : [String : Double]]]) {
-        print("Starting Unwrapping of dictionary\n")
+//        print("Starting Unwrapping of dictionary\n")
         var id: String = String()
         var name: String = String()
         var buyingPrice: Double = Double()
@@ -153,9 +153,9 @@ class PropertiesList: UIViewController {
         var valueGrowth: Double = Double()
         var squaredFeet: Double = Double()
         
-        print("Dictionary: ", toUnwrap)
+//        print("Dictionary: ", toUnwrap)
         for (propertyId, dictionary) in toUnwrap {
-            print("Property Id: ", propertyId)
+//            print("Property Id: ", propertyId)
             id = propertyId
             for (propertyName, dict) in dictionary {
                 name = propertyName
@@ -213,9 +213,15 @@ extension PropertiesList: UITableViewDataSource {
         // Set the cell label text
         cell.propertyName.text = properties[indexPath.row].name
         cell.propertyValue.text = String(properties[indexPath.row].buyingPrice)
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none 
         // Push your cell to the table view
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newViewController = EditProperty()
+        newViewController.property = properties[indexPath.row]
+        self.present(newViewController, animated: true)
     }
 }
 
