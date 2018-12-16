@@ -103,7 +103,7 @@ class EditProperty: UIViewController {
         
         // TODO: Add conditional to check if is editing or creating new
         let newProperty = valueView.createPropertyModel()
-        //        print(newProperty.getDictionary())
+        print("New Property Name: ", newProperty.name)
         
         // Get User ID
         let userUID = Auth.auth().currentUser?.uid
