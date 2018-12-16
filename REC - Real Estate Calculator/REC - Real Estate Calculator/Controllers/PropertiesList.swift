@@ -127,10 +127,10 @@ class PropertiesList: UIViewController {
         // Returns: dataProperties
         Login().readPropertiesFromDatabase()
         properties = []
-        if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
+        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
             // Can unwrap an populate property list
-            if UserDefaults.standard.dictionary(forKey: "properties") != nil {
-                unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
+            if let propertyToUnwrap = UserDefaults.standard.dictionary(forKey: "properties") as?  [String : [String : [String : Double]]]{
+                unwrapDictionary(toUnwrap: propertyToUnwrap)
             }
         }
         tableView.reloadData()

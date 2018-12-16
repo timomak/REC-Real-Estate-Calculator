@@ -146,6 +146,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 // Making sure that the rest of the app knows that there are properties already in the app.
                 UserDefaults.standard.set(true, forKey: "hasProperty")
                 UserDefaults.standard.synchronize()
+            } else {
+                UserDefaults.standard.set(false, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
             }
         })
     }
