@@ -120,4 +120,9 @@ class NewProperty: UIViewController {
         Database.database().reference().child("users").child(userId).child("properties").childByAutoId().setValue(property)
 //        print("Properties: ", property)
     }
+    @objc func moveBackground() {
+        UIView.animate(withDuration: 1, animations: {
+            self.coolShapedBackground.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
+        }, completion: nil)
+    }
 }

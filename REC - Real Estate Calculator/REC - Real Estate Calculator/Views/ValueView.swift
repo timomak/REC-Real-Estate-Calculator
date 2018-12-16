@@ -36,6 +36,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         //        textField.delegate = self
         textField.textAlignment = .center
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         textField.tag = 0
         return textField
     }()
@@ -74,6 +75,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 1
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -111,6 +113,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 2
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -147,6 +150,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 3
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -183,6 +187,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 4
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -219,6 +224,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 5
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -255,6 +261,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 6
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -291,6 +298,7 @@ class ValueView: UIView, UITextFieldDelegate {
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.textAlignment = .center
         textField.tag = 7
+        textField.addTarget(self, action: #selector(NewProperty.moveBackground), for: .touchDown)
         return textField
     }()
     
@@ -305,13 +313,13 @@ class ValueView: UIView, UITextFieldDelegate {
         // NAME
         // Adding Name TextView
         superview.addSubview(nameValue)
-        nameValue.anchor(top: toView.topAnchor, leading: toView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 40, left: 10, bottom: 0, right: 0), size: .init(width: 160, height: 40))
+        nameValue.anchor(top: toView.topAnchor, leading: toView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 60, left: 10, bottom: 0, right: 0), size: .init(width: 160, height: 40))
         
         
         // Adding Name Input TextView
         superview.addSubview(nameInput)
         nameInput.delegate = self
-        nameInput.anchor(top: toView.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
+        nameInput.anchor(top: toView.topAnchor, leading: nil, bottom: nil, trailing: toView.trailingAnchor, padding: .init(top: 60, left: 0, bottom: 0, right: 10), size: .init(width: 160, height: 40))
 //        nameInput.delegate = self as? UITextFieldDelegate
         
         // Adding Name UnderLine
