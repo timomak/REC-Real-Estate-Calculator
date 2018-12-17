@@ -29,7 +29,7 @@ class Calculate: UIViewController {
     private let squaredFootCost: UITextView = {
         let textView = UITextView()
         textView.text = "Price Per Squared Foot:\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -43,7 +43,7 @@ class Calculate: UIViewController {
     private let yearlyTax: UITextView = {
         let textView = UITextView()
         textView.text = "Yearly Tax:\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -57,7 +57,7 @@ class Calculate: UIViewController {
     private let yearlyIncome: UITextView = {
         let textView = UITextView()
         textView.text = "Yearly Income (after tax and fees):\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -71,7 +71,7 @@ class Calculate: UIViewController {
     private let monthlyIncome: UITextView = {
         let textView = UITextView()
         textView.text = "Monthly Income (after tax and fees):\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -85,7 +85,7 @@ class Calculate: UIViewController {
     private let grossIncome: UITextView = {
         let textView = UITextView()
         textView.text = "Gross Income:\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -99,7 +99,7 @@ class Calculate: UIViewController {
     private let valueGrowth: UITextView = {
         let textView = UITextView()
         textView.text = "Yearly Value Growth:\n  $"
-        textView.font = UIFont.boldSystemFont(ofSize: 23)
+        textView.font = UIFont.boldSystemFont(ofSize: 22)
         textView.backgroundColor = nil
         textView.textAlignment = .left
         textView.isEditable = false
@@ -121,7 +121,7 @@ class Calculate: UIViewController {
         
         // Adding Squared Foot Cost
         view.addSubview(squaredFootCost)
-        squaredFootCost.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 110, left: 20, bottom: 0, right: 0))
+        squaredFootCost.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 110, left: 5, bottom: 0, right: 0))
 
         // Adding Yearly Tax text
         view.addSubview(yearlyTax)
