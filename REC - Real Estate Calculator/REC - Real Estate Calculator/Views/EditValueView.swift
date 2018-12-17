@@ -458,7 +458,7 @@ class EditValueView: UIView, UITextFieldDelegate {
     func createPropertyModel() -> Property {
         // Create Property
         let newProperty = Property(
-            name: nameInput.text ?? "No Name",
+            name: String(nameInput.text!) ?? "No Name",
             buyingPrice: Double(costInput.text!) ?? 1,
             rent: Double(rentInput.text!) ?? 1,
             buildingTax: Double(buildingTaxInput.text!) ?? 1,

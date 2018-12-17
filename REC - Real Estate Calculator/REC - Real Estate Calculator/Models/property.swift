@@ -36,7 +36,7 @@ class Property {
     }
     
     // Function to return property in JSON format to be able to store it with Firebase
-    func getDictionary() -> [String: [String: [String: Double]]] {
+    func getDictionaryWithId() -> [String: [String: [String: Double]]] {
         return [id: [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth, "squaredFeet":squaredFeet]]]
     }
 }

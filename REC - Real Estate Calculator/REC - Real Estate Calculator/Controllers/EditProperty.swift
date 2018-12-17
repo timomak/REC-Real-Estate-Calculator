@@ -38,6 +38,18 @@ class EditProperty: UIViewController {
         return button
     }()
     
+    // Creating Calculate button
+    private let calculateButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.layer.cornerRadius = 15
+        button.setTitle("Calculate", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.7333333333, green: 0.6980392157, blue: 1, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(calculateButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     // Creating Save in button
     private let saveButton: UIButton = {
         let button = UIButton()
@@ -78,6 +90,11 @@ class EditProperty: UIViewController {
         view.addSubview(cancelButton)
         cancelButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 20, bottom: 0, right: 0), size: .init(width: 35, height: 35))
         
+        // Adding calculate button
+        view.addSubview(calculateButton)
+        calculateButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 170, height: 35))
+        calculateButton.centerHorizontalOfView(to: view)
+        
         // Adding Save button
         view.addSubview(saveButton)
         saveButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 20), size: .init(width: 35, height: 35))
@@ -96,6 +113,15 @@ class EditProperty: UIViewController {
         PropertiesList().refreshDataInTable()
         // Remove current view
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func calculateButtonPressed() {
+        let newProperty = valueView.createPropertyModel()
+        print("New Property Name: ", newProperty.name)
+        
+        let newViewController = Calculate()
+        newViewController.property = newProperty
+        self.present(newViewController, animated: true)
     }
     
     @objc private func saveButtonPressed() {
@@ -117,7 +143,7 @@ class EditProperty: UIViewController {
     
     func sendPropertyToDatabase(userId: String, propertyToUpdate: [String: [String: Double]]) {
         // Saving to Database
-       Database.database().reference().child("users").child(userId).child("properties").child(property.id).removeValue()
+       Database.database().reference().child("users").child(userId).child("properties").child(String(property.id)).removeValue()
         
         Database.database().reference().child("users").child(userId).child("properties").childByAutoId().setValue(propertyToUpdate)
         //        print("Properties: ", property)

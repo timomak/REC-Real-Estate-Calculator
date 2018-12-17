@@ -47,12 +47,9 @@ class PropertiesList: UIViewController {
     // Adding Button To Navbar
     private let addNewPropertyButton: UIButton = {
         let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "+"), for: .normal)
-//        button.imageEdgeInsets = UIEdgeInsets(top: 50, left: 25, bottom: 50, right: 25)
         button.setTitle("+", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.7333333333, green: 0.6980392157, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
-//        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         button.addTarget(self, action: #selector(newPropertyButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -71,6 +68,12 @@ class PropertiesList: UIViewController {
                 unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("view did appear")
+        refreshDataInTable()
+        tableView.reloadData()
     }
     
     
