@@ -122,6 +122,8 @@ class EditProperty: UIViewController {
         let newViewController = Calculate()
         newViewController.property = newProperty
         self.present(newViewController, animated: true)
+        
+        
     }
     
     @objc private func saveButtonPressed() {
