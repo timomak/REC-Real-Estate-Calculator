@@ -65,12 +65,57 @@ class PropertiesList: UIViewController {
         return button
     }()
     
+    // Adding Button To tabBar
+    private let searchButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+        button.layer.cornerRadius = 0
+        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.tag = 0
+        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        return button
+    }()
+
+    // Adding Button To tabBar
+    private let propertiesButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
+        button.layer.cornerRadius = 0
+        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.tag = 1
+        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        return button
+    }()
+
+    // Adding Button To tabBar
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        button.layer.cornerRadius = 0
+        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.tag = 2
+        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        return button
+    }()
+
+    // Creating tabBar
+    private let tabBar: UIView = {
+        let navigationBar = UIView()
+        navigationBar.alpha = 0
+        return navigationBar
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
         addCustomNavbar()
-        addTableView()
-        
+        addCustomTabar()
+//        addTableView()
         
         // Returns: dataProperties
         if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
@@ -118,15 +163,15 @@ class PropertiesList: UIViewController {
     func addTableView() {
         // Add to Table View to View
         view.addSubview(tableView)
-        
+
         // Table View Size
-        tableView.anchor(top: navbar.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        
+        tableView.anchor(top: navbar.bottomAnchor, leading: view.leadingAnchor, bottom: tabBar.topAnchor, trailing: view.trailingAnchor)
+
         // Register Table View Cells
         tableView.register(PropertyListCell.self, forCellReuseIdentifier: cellId)
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         // Table View Properties
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -135,6 +180,23 @@ class PropertiesList: UIViewController {
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
+    
+    func addCustomTabar() {
+        // Adding tab bar background
+        view.addSubview(tabBar)
+        tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.bounds.width, height: 80))
+
+        // Buttons Stack
+        let buttonsStack = UIStackView(arrangedSubviews: [searchButton, propertiesButton, profileButton])
+        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStack.distribution = .fillEqually
+        buttonsStack.axis = .horizontal
+        buttonsStack.spacing = 20
+        
+        view.addSubview(buttonsStack)
+        buttonsStack.anchor(top: tabBar.topAnchor, leading: tabBar.leadingAnchor, bottom: tabBar.bottomAnchor, trailing: tabBar.trailingAnchor)
+    }
+    
     @objc func refreshData(_ sender: Any) {
         refreshDataInTable()
         tableView.refreshControl?.endRefreshing()
