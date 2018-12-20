@@ -73,7 +73,7 @@ class PropertiesList: UIViewController {
         button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         button.tag = 0
-        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -85,7 +85,7 @@ class PropertiesList: UIViewController {
         button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         button.tag = 1
-        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        button.addTarget(self, action: #selector(propertiesButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -97,7 +97,7 @@ class PropertiesList: UIViewController {
         button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         button.tag = 2
-        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -108,15 +108,22 @@ class PropertiesList: UIViewController {
         return navigationBar
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-        addCustomNavbar()
+//        addCustomNavbar()
         addCustomTabar()
-//        addTableView()
+//        propertiesList()
         
+
+    }
+    
+    @objc func propertiesButtonPressed() {
+        removeAllViews()
+        // TODO: Remove other views
+        addCustomNavbar()
+        addTableView()
         // Returns: dataProperties
         if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
             // Can unwrap an populate property list
@@ -126,13 +133,26 @@ class PropertiesList: UIViewController {
         }
     }
     
+    @objc func searchButtonPressed() {
+        removeAllViews()
+        // TODO: Add the search View
+    }
+    
+    private func removeAllViews() {
+        navbar.removeFromSuperview()
+        addNewPropertyButton.removeFromSuperview()
+        viewNavbarTitle.removeFromSuperview()
+        exportButton.removeFromSuperview()
+        tableView.removeFromSuperview()
+        
+        // TODO: Remove Search view and Profile view here.
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         print("view did appear")
         refreshDataInTable()
         tableView.reloadData()
     }
-    
-    
     
     func addCustomNavbar() {
         // Adding Navbar View
@@ -159,28 +179,7 @@ class PropertiesList: UIViewController {
         // Title Size
         viewNavbarTitle.anchor(top: navbar.topAnchor, leading: navbar.leadingAnchor, bottom: navbar.bottomAnchor, trailing: nil, padding: .init(top: 40, left: 30, bottom: 5, right: 0))
     }
-    
-    func addTableView() {
-        // Add to Table View to View
-        view.addSubview(tableView)
 
-        // Table View Size
-        tableView.anchor(top: navbar.bottomAnchor, leading: view.leadingAnchor, bottom: tabBar.topAnchor, trailing: view.trailingAnchor)
-
-        // Register Table View Cells
-        tableView.register(PropertyListCell.self, forCellReuseIdentifier: cellId)
-        tableView.delegate = self
-        tableView.dataSource = self
-
-        // Table View Properties
-        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.allowsSelection = true
-        var refreshControl = UIRefreshControl()
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-    }
-    
     func addCustomTabar() {
         // Adding tab bar background
         view.addSubview(tabBar)
@@ -197,11 +196,31 @@ class PropertiesList: UIViewController {
         buttonsStack.anchor(top: tabBar.topAnchor, leading: tabBar.leadingAnchor, bottom: tabBar.bottomAnchor, trailing: tabBar.trailingAnchor)
     }
     
+    func addTableView() {
+        // Add to Table View to View
+        view.addSubview(tableView)
+        
+        // Table View Size
+        tableView.anchor(top: navbar.bottomAnchor, leading: view.leadingAnchor, bottom: tabBar.topAnchor, trailing: view.trailingAnchor)
+        
+        // Register Table View Cells
+        tableView.register(PropertyListCell.self, forCellReuseIdentifier: cellId)
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // Table View Properties
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.allowsSelection = true
+        var refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    
     @objc func refreshData(_ sender: Any) {
         refreshDataInTable()
         tableView.refreshControl?.endRefreshing()
-//        tableView.activityIndicatorView.stopAnimating()
-        
     }
     
     func refreshDataInTable() {
@@ -224,7 +243,7 @@ class PropertiesList: UIViewController {
     }
     
     func unwrapDictionary(toUnwrap: [String: [String : [String : Double]]]) {
-//        print("Starting Unwrapping of dictionary\n")
+        // print("Starting Unwrapping of dictionary\n")
         var id: String = String()
         var name: String = String()
         var buyingPrice: Double = Double()
@@ -235,9 +254,9 @@ class PropertiesList: UIViewController {
         var valueGrowth: Double = Double()
         var squaredFeet: Double = Double()
         
-//        print("Dictionary: ", toUnwrap)
+        // print("Dictionary: ", toUnwrap)
         for (propertyId, dictionary) in toUnwrap {
-//            print("Property Id: ", propertyId)
+            // print("Property Id: ", propertyId)
             id = propertyId
             for (propertyName, dict) in dictionary {
                 name = propertyName
