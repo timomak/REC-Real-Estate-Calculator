@@ -25,13 +25,14 @@ class Calculate: UIViewController {
         return button
     }()
     
-    // Adding Export Button
+    // Creating Export button
     private let exportButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Export", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        button.addTarget(self, action: #selector(exportButtonPressed), for: .touchUpInside)
+        button.backgroundColor = #colorLiteral(red: 0.7409107685, green: 0.6965670586, blue: 1, alpha: 1)
+        button.layer.cornerRadius = 0
+        button.setImage(#imageLiteral(resourceName: "Export-white"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
         return button
     }()
     
@@ -142,7 +143,7 @@ class Calculate: UIViewController {
         
         // Adding cancel button
         view.addSubview(exportButton)
-        exportButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 20))
+        exportButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 20), size: .init(width: 24, height: 32))
         
         // Adding Squared Foot Cost
         view.addSubview(squaredFootCost)
@@ -207,7 +208,7 @@ class Calculate: UIViewController {
     }
     
     // Creating a CSV file to export Property (As a test)
-    private func createCSV() {
+    @objc private func createCSV() {
         let fileName = "\(property.name)-spreadsheet-info.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         

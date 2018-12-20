@@ -44,6 +44,17 @@ class PropertiesList: UIViewController {
         return title
     }()
 
+    // Creating Export button
+    private let exportButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.layer.cornerRadius = 0
+        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
+        button.imageView?.contentMode = .scaleToFill
+        button.addTarget(self, action: #selector(createCSV), for: .touchUpInside)
+        return button
+    }()
+    
     // Adding Button To Navbar
     private let addNewPropertyButton: UIButton = {
         let button = UIButton()
@@ -91,6 +102,12 @@ class PropertiesList: UIViewController {
         // Button Size
         addNewPropertyButton.anchor(top: navbar.topAnchor, leading: nil, bottom: nil, trailing: navbar.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 20), size: .init(width: 48, height: 48))
 
+        // Adding Export Button to Navbar
+        view.addSubview(exportButton)
+        
+        // Export Button Size
+        exportButton.anchor(top: nil, leading: nil, bottom: addNewPropertyButton.bottomAnchor, trailing: addNewPropertyButton.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 7, right: 7), size: .init(width: 24, height: 32))
+        
         // Adding Title to Navbar
         view.addSubview(viewNavbarTitle)
         
@@ -205,7 +222,7 @@ class PropertiesList: UIViewController {
     }
     
     // Creating a CSV file to export Property (As a test)
-    private func createCSV() {
+    @objc private func createCSV() {
         let fileName = "\(Auth.auth().currentUser!.displayName!)-spreadsheet-info.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         var csvText = "Name,Cost,Rent,Building Tax,Property Tax,Yearly Fees,Value Growth,Squared Feet\n"
@@ -273,10 +290,9 @@ extension PropertiesList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let newViewController = EditProperty()
-//        newViewController.property = properties[indexPath.row]
-//        self.present(newViewController, animated: true)
-        createCSV()
+        let newViewController = EditProperty()
+        newViewController.property = properties[indexPath.row]
+        self.present(newViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
