@@ -203,6 +203,54 @@ class PropertiesList: UIViewController {
     func deleteProperty(userId: String, propertyToDelete: Property) {
     Database.database().reference().child("users").child(userId).child("properties").child(propertyToDelete.id).removeValue()
     }
+    
+    // Creating a CSV file to export Property (As a test)
+    private func createCSV() {
+        let fileName = "\(Auth.auth().currentUser!.displayName!)-spreadsheet-info.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        var csvText = "Name,Cost,Rent,Building Tax,Property Tax,Yearly Fees,Value Growth,Squared Feet\n"
+        var totalTaxAndFees: Double = 0
+        var totalRent: Double = 0
+        var totalIncome: Double = 0
+        
+        
+        for property in properties {
+            // Creating line for each Property to add to spreadsheet
+            csvText += "\(property.name),$ \(property.buyingPrice),$ \(property.rent),$ \(property.buildingTax),$ \(property.propertyTax),$ \(property.yearlyFees),\(property.valueGrowth),\(property.squaredFeet)\n"
+            
+            
+            // Calculating Total tax and Fees yearly
+            totalTaxAndFees += ((property.propertyTax + property.buildingTax) * 12) + property.yearlyFees
+            // Calculating Total rent Yearly
+            totalRent += property.rent * 12
+
+        }
+        totalIncome = totalRent - totalTaxAndFees
+        csvText += " \nYearly\nTax + Fees,$ \(totalTaxAndFees)\nRent,$ \(totalRent)\nTotal,$ \(totalIncome)\n"
+        csvText += " \nMothly\nTax + Fees,$ \(totalTaxAndFees / 12)\nRent,$ \(totalRent / 12)\nTotal,$ \(totalIncome / 12)\n"
+        
+        do {
+            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+            
+            let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
+            vc.excludedActivityTypes = [
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.postToFlickr,
+                UIActivity.ActivityType.postToVimeo,
+                UIActivity.ActivityType.postToTencentWeibo,
+                UIActivity.ActivityType.postToTwitter,
+                UIActivity.ActivityType.postToFacebook,
+                UIActivity.ActivityType.openInIBooks
+            ]
+            present(vc, animated: true, completion: nil)
+            
+        } catch {
+            
+            print("Failed to create file")
+            print("\(error)")
+        }
+    }
 }
 
 extension PropertiesList: UITableViewDataSource {
@@ -225,9 +273,10 @@ extension PropertiesList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newViewController = EditProperty()
-        newViewController.property = properties[indexPath.row]
-        self.present(newViewController, animated: true)
+//        let newViewController = EditProperty()
+//        newViewController.property = properties[indexPath.row]
+//        self.present(newViewController, animated: true)
+        createCSV()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -118,6 +118,7 @@ class EditProperty: UIViewController {
     @objc private func calculateButtonPressed() {
         let newProperty = valueView.createPropertyModel()
         print("New Property Name: ", newProperty.name)
+
         
         let newViewController = Calculate()
         newViewController.property = newProperty
@@ -125,6 +126,36 @@ class EditProperty: UIViewController {
         
         
     }
+//    // Creating a CSV file to export Property (As a test)
+//    func createCSV(from propertye:Property) {
+//        let fileName = "\(propertye.name).csv"
+//        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+//
+//        var csvText = "Name,Cost,Remt\n\(propertye.name),\(propertye.buyingPrice),\(propertye.rent),\(propertye.)"
+//
+//
+//            do {
+//                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+//
+//                let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
+//                vc.excludedActivityTypes = [
+//                    UIActivity.ActivityType.assignToContact,
+//                    UIActivity.ActivityType.saveToCameraRoll,
+//                    UIActivity.ActivityType.postToFlickr,
+//                    UIActivity.ActivityType.postToVimeo,
+//                    UIActivity.ActivityType.postToTencentWeibo,
+//                    UIActivity.ActivityType.postToTwitter,
+//                    UIActivity.ActivityType.postToFacebook,
+//                    UIActivity.ActivityType.openInIBooks
+//                ]
+//                present(vc, animated: true, completion: nil)
+//
+//            } catch {
+//
+//                print("Failed to create file")
+//                print("\(error)")
+//            }
+//    }
     
     @objc private func saveButtonPressed() {
         // Save Property
