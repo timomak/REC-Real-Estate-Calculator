@@ -97,7 +97,7 @@ class PropertiesList: UIViewController {
         button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         button.tag = 2
-        button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -108,15 +108,24 @@ class PropertiesList: UIViewController {
         return navigationBar
     }()
     
+    private var searchView = SearchView()
+    private var profileView = ProfileView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
-//        addCustomNavbar()
+        // Adding TabBar to Handle all logic of View
         addCustomTabar()
-//        propertiesList()
+        // Adding as Default View
+        propertiesButtonPressed()
         
 
+    }
+    
+    @objc func searchButtonPressed() {
+        removeAllViews()
+        // TODO: Add the search View
+        searchView.loadSelf(superView: view, tabBar: tabBar)
     }
     
     @objc func propertiesButtonPressed() {
@@ -133,9 +142,9 @@ class PropertiesList: UIViewController {
         }
     }
     
-    @objc func searchButtonPressed() {
+    @objc private func profileButtonPressed() {
         removeAllViews()
-        // TODO: Add the search View
+        profileView.loadSelf(superView: view, tabBar: tabBar)
     }
     
     private func removeAllViews() {
@@ -144,12 +153,14 @@ class PropertiesList: UIViewController {
         viewNavbarTitle.removeFromSuperview()
         exportButton.removeFromSuperview()
         tableView.removeFromSuperview()
+        searchView.removeFromSuperview()
+        profileView.removeFromSuperview()
         
         // TODO: Remove Search view and Profile view here.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("view did appear")
+//        print("view did appear")
         refreshDataInTable()
         tableView.reloadData()
     }
@@ -281,7 +292,7 @@ class PropertiesList: UIViewController {
                     else if nameOfValue == "squaredFeet" {
                         squaredFeet = value
                     }
-                    print("Name: \(name) [\(nameOfValue): \(value)]")
+                    // print("Name: \(name) [\(nameOfValue): \(value)]")
                 }
             }
             // append here

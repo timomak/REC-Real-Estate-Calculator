@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F27A5855C00793963A5A30B /* Pods_REC___Real_Estate_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */; };
+		F339EB6821CC5AB100B8D23F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6721CC5AB100B8D23F /* SearchView.swift */; };
+		F339EB6A21CC617D00B8D23F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6921CC617D00B8D23F /* ProfileView.swift */; };
 		F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */; };
 		F360BA3D21C5BF3100C5FDF4 /* EditValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BA3C21C5BF3100C5FDF4 /* EditValueView.swift */; };
 		F361FBC021C7139F00395F4C /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F361FBBF21C7139F00395F4C /* Calculate.swift */; };
@@ -28,6 +30,8 @@
 		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_REC___Real_Estate_Calculator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		F339EB6721CC5AB100B8D23F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F339EB6921CC617D00B8D23F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProperty.swift; sourceTree = "<group>"; };
 		F360BA3C21C5BF3100C5FDF4 /* EditValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValueView.swift; sourceTree = "<group>"; };
 		F361FBBF21C7139F00395F4C /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 		F3D40F4521C3769F0025640A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F339EB6721CC5AB100B8D23F /* SearchView.swift */,
+				F339EB6921CC617D00B8D23F /* ProfileView.swift */,
 				F3D40F4621C376AE0025640A /* TableViewCell.swift */,
 				F39E074821C4B7E700F3846A /* ValueView.swift */,
 				F360BA3C21C5BF3100C5FDF4 /* EditValueView.swift */,
@@ -301,9 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F360BA3D21C5BF3100C5FDF4 /* EditValueView.swift in Sources */,
+				F339EB6A21CC617D00B8D23F /* ProfileView.swift in Sources */,
 				F39E074921C4B7E700F3846A /* ValueView.swift in Sources */,
 				F3D40F4721C376AE0025640A /* TableViewCell.swift in Sources */,
 				F3D40F4421C3588F0025640A /* PropertiesList.swift in Sources */,
+				F339EB6821CC5AB100B8D23F /* SearchView.swift in Sources */,
 				F3D40F4C21C38C100025640A /* NewProperty.swift in Sources */,
 				F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */,
 				F3D40F4A21C384CB0025640A /* property.swift in Sources */,
