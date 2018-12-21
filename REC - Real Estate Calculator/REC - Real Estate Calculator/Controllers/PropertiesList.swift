@@ -68,10 +68,10 @@ class PropertiesList: UIViewController {
     // Adding Button To tabBar
     private let searchButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.layer.cornerRadius = 0
-        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.setImage(#imageLiteral(resourceName: "Search-TabBarButtons"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
         button.tag = 0
         button.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         return button
@@ -80,10 +80,10 @@ class PropertiesList: UIViewController {
     // Adding Button To tabBar
     private let propertiesButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.layer.cornerRadius = 0
-        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.setImage(#imageLiteral(resourceName: "Properties-TabBarButtons"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         button.tag = 1
         button.addTarget(self, action: #selector(propertiesButtonPressed), for: .touchUpInside)
         return button
@@ -92,10 +92,10 @@ class PropertiesList: UIViewController {
     // Adding Button To tabBar
     private let profileButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.layer.cornerRadius = 0
-        button.setImage(#imageLiteral(resourceName: "export-purple"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        button.setImage(#imageLiteral(resourceName: "Profile-TabBarButtons"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
         button.tag = 2
         button.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
         return button
@@ -126,6 +126,11 @@ class PropertiesList: UIViewController {
         removeAllViews()
         // TODO: Add the search View
         searchView.loadSelf(superView: view, tabBar: tabBar)
+        
+        // Kinda animate size change of buttons
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        propertiesButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
     }
     
     @objc func propertiesButtonPressed() {
@@ -140,11 +145,21 @@ class PropertiesList: UIViewController {
                 unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
             }
         }
+        
+        // Kinda animate size change of buttons
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
+        propertiesButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
     }
     
     @objc private func profileButtonPressed() {
         removeAllViews()
         profileView.loadSelf(superView: view, tabBar: tabBar)
+        
+        // Kinda animate size change of buttons
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
+        propertiesButton.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
     }
     
     private func removeAllViews() {
@@ -194,14 +209,14 @@ class PropertiesList: UIViewController {
     func addCustomTabar() {
         // Adding tab bar background
         view.addSubview(tabBar)
-        tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.bounds.width, height: 80))
+        tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.bounds.width, height: view.bounds.width / 3))
 
         // Buttons Stack
         let buttonsStack = UIStackView(arrangedSubviews: [searchButton, propertiesButton, profileButton])
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
         buttonsStack.distribution = .fillEqually
         buttonsStack.axis = .horizontal
-        buttonsStack.spacing = 20
+        buttonsStack.spacing = 0
         
         view.addSubview(buttonsStack)
         buttonsStack.anchor(top: tabBar.topAnchor, leading: tabBar.leadingAnchor, bottom: tabBar.bottomAnchor, trailing: tabBar.trailingAnchor)
