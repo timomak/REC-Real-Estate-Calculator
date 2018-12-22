@@ -16,8 +16,10 @@
 
 # TODO:
 ## Search View
-- Find API to list and parse through for properties
-- Add Swifty JSON
++ Find API to list and parse through for properties
+- Learn More about Networking Layer
+	- conned with HTTP Requests
+	- Read XML File in swift
 - Connect to Zillow API - ZPID ( *X1-ZWz187ardz0owb_6wmn8* )
 - Get First Property values
 - Display first property from Zillow
