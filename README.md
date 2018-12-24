@@ -16,20 +16,29 @@
 
 # TODO:
 ## Search View
-+ Find API to list and parse through for properties
-- Learn More about Networking Layer
-	- conned with HTTP Requests
-	- Read XML File in swift
-- Connect to Zillow API - ZPID ( *X1-ZWz187ardz0owb_6wmn8* )
-- Get First Property values
-- Display first property from Zillow
-+ Add Search view to Properties List in TabBar
++ [ x]  Find API to list and parse through for properties
+- [ ] Learn More about Networking Layer
+	- [ ] Connect with HTTP Requests
+	- [ ] Be able to read JSON
+- [ ] Create a Scraper to API to get apartments from RedFin (and maybe a couple more places).
+	- [ ] Create Scracher
+	- [ ] Create API
+	- [ ] Connect to API
+	- [ ] Read API data
+	- [ ] Create a model for API Data
+	- [ ] Create View to Display Model
+
 
 ## Profile View:
-- Create Profile View
-	- Add Overall Property Stats
-	- Credits page
-+ Add Profile View in Properties List in TabBar
+- [ ] Create Profile View
+	- [ ] Add Overall Property Stats
+	- [ ] Credits page
++ [ x] Add Profile View in Properties List in TabBar
 
 ## Assets:
-+ Create tabBar item icons
++ [ x] Create tabBar item icons
+
+
+# Resources:
+* https://medium.com/flawless-app-stories/writing-network-layer-in-swift-protocol-oriented-approach-4fa40ef1f908
+	* Continue from: JSONParameterEncoder
