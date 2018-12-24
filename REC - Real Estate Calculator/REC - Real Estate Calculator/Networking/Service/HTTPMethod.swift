@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Creating an Enum so I don't have to re-type request method
+// Avoids issues and misspelling
 public enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"

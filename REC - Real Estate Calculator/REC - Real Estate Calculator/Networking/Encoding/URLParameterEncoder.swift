@@ -8,8 +8,11 @@
 
 import Foundation
 
+// Helps follow guidlines for URL parameters
+// Because things such as simbols are illegal in URL
+// Need to eventually add Unit Tests (this part is very crucial)
 public struct URLParameterEncoder: ParameterEncoder {
-    public static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws{
+    public static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
         guard let url = urlRequest.url else { throw NetworkError.missingURL }
         
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {

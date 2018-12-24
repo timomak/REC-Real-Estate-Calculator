@@ -8,6 +8,7 @@
 
 import UIKit
 
+// EndPouit is a Corner stone to connect everything
 protocol EndPointType {
     var baseUrl: URL {get}
     var path: String {get}

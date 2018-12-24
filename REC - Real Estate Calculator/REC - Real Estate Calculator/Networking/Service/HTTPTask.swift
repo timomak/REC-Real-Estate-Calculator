@@ -8,8 +8,12 @@
 
 import Foundation
 
+
+// Type Alias
 public typealias HTTPHeaders = [String:String]
 
+// Resposible for configuring parameters for EndPoints
+// You can add as many tasks you'd like, for now only requests
 public enum HTTPTask {
     
     case request

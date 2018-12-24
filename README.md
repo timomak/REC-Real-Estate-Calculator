@@ -40,5 +40,7 @@
 
 
 # Resources:
-* https://medium.com/flawless-app-stories/writing-network-layer-in-swift-protocol-oriented-approach-4fa40ef1f908
+* Network Layer:  https://medium.com/flawless-app-stories/writing-network-layer-in-swift-protocol-oriented-approach-4fa40ef1f908
 	* Continue from: JSONParameterEncoder
+* Unit Testing: [The complete guide to Network Unit Testing in Swift](https://medium.com/flawless-app-stories/the-complete-guide-to-network-unit-testing-in-swift-db8b3ee2c327)
+* More advance Network Layer: [URLSession Tutorial: Getting Started | raywenderlich.com](https://www.raywenderlich.com/158106/urlsession-tutorial-getting-started)
