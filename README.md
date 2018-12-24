@@ -16,7 +16,7 @@
 
 # TODO:
 ## Search View
-+ [ x]  Find API to list and parse through for properties
++ [x]  Find API to list and parse through for properties
 - [ ] Learn More about Networking Layer
 	- [ ] Connect with HTTP Requests
 	- [ ] Be able to read JSON
@@ -36,7 +36,7 @@
 + [ x] Add Profile View in Properties List in TabBar
 
 ## Assets:
-+ [ x] Create tabBar item icons
++ [x] Create tabBar item icons
 
 
 # Resources:
@@ -44,3 +44,6 @@
 	* Continue from: JSONParameterEncoder
 * Unit Testing: [The complete guide to Network Unit Testing in Swift](https://medium.com/flawless-app-stories/the-complete-guide-to-network-unit-testing-in-swift-db8b3ee2c327)
 * More advance Network Layer: [URLSession Tutorial: Getting Started | raywenderlich.com](https://www.raywenderlich.com/158106/urlsession-tutorial-getting-started)
+
+# Last Task:
+## Put Network layer in practice.
