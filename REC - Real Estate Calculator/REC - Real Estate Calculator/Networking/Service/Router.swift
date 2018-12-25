@@ -34,7 +34,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     // Function to convert EndPointType to URLSession
     fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
         var request = URLRequest(
-            url: route.baseUrl.appendingPathComponent(route.path),
+            url: route.baseURL.appendingPathComponent(route.path),
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
             timeoutInterval: 10.0)
         
