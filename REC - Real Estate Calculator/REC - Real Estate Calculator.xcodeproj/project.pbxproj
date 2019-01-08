@@ -8,25 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3F27A5855C00793963A5A30B /* Pods_REC___Real_Estate_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */; };
-		F339EB6821CC5AB100B8D23F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6721CC5AB100B8D23F /* SearchView.swift */; };
+		F339EB6821CC5AB100B8D23F /* MortgageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6721CC5AB100B8D23F /* MortgageView.swift */; };
 		F339EB6A21CC617D00B8D23F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6921CC617D00B8D23F /* ProfileView.swift */; };
-		F35D870A21D09B2800DD446C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D870921D09B2800DD446C /* JSONParameterEncoder.swift */; };
-		F35D870C21D09BFE00DD446C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D870B21D09BFE00DD446C /* NetworkRouter.swift */; };
-		F35D870E21D09F5800DD446C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D870D21D09F5800DD446C /* Router.swift */; };
-		F35D871021D2091300DD446C /* MovieEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D870F21D2091300DD446C /* MovieEndPoint.swift */; };
-		F35D871221D2095100DD446C /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D871121D2095100DD446C /* MovieModel.swift */; };
-		F35D871421D2098A00DD446C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D871321D2098A00DD446C /* NetworkManager.swift */; };
-		F35D871721D2163200DD446C /* TestingNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35D871621D2163200DD446C /* TestingNetworkLayer.swift */; };
 		F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */; };
 		F360BA3D21C5BF3100C5FDF4 /* EditValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BA3C21C5BF3100C5FDF4 /* EditValueView.swift */; };
 		F361FBC021C7139F00395F4C /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F361FBBF21C7139F00395F4C /* Calculate.swift */; };
 		F39E074921C4B7E700F3846A /* ValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E074821C4B7E700F3846A /* ValueView.swift */; };
 		F39E074B21C4C84D00F3846A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F39E074A21C4C84D00F3846A /* GoogleService-Info.plist */; };
-		F3BFD25A21CEE3950074559C /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFD25921CEE3950074559C /* EndPointProtocol.swift */; };
-		F3BFD25D21CEE5280074559C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFD25C21CEE5280074559C /* HTTPMethod.swift */; };
-		F3BFD25F21CEE5B40074559C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFD25E21CEE5B40074559C /* HTTPTask.swift */; };
-		F3BFD26221CEE6A40074559C /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFD26121CEE6A40074559C /* ParameterEncoding.swift */; };
-		F3BFD26421CEE7CF0074559C /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BFD26321CEE7CF0074559C /* URLParameterEncoder.swift */; };
 		F3D40F2B21C34A8D0025640A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2A21C34A8D0025640A /* AppDelegate.swift */; };
 		F3D40F2D21C34A8D0025640A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D40F2C21C34A8D0025640A /* Login.swift */; };
 		F3D40F3221C34A8E0025640A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D40F3121C34A8E0025640A /* Assets.xcassets */; };
@@ -42,25 +30,13 @@
 		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_REC___Real_Estate_Calculator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.debug.xcconfig"; sourceTree = "<group>"; };
-		F339EB6721CC5AB100B8D23F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F339EB6721CC5AB100B8D23F /* MortgageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageView.swift; sourceTree = "<group>"; };
 		F339EB6921CC617D00B8D23F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		F35D870921D09B2800DD446C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
-		F35D870B21D09BFE00DD446C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
-		F35D870D21D09F5800DD446C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		F35D870F21D2091300DD446C /* MovieEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndPoint.swift; sourceTree = "<group>"; };
-		F35D871121D2095100DD446C /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		F35D871321D2098A00DD446C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		F35D871621D2163200DD446C /* TestingNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingNetworkLayer.swift; sourceTree = "<group>"; };
 		F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProperty.swift; sourceTree = "<group>"; };
 		F360BA3C21C5BF3100C5FDF4 /* EditValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValueView.swift; sourceTree = "<group>"; };
 		F361FBBF21C7139F00395F4C /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		F39E074821C4B7E700F3846A /* ValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueView.swift; sourceTree = "<group>"; };
 		F39E074A21C4C84D00F3846A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F3BFD25921CEE3950074559C /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
-		F3BFD25C21CEE5280074559C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		F3BFD25E21CEE5B40074559C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
-		F3BFD26121CEE6A40074559C /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
-		F3BFD26321CEE7CF0074559C /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		F3D40F2721C34A8D0025640A /* REC - Real Estate Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "REC - Real Estate Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D40F2A21C34A8D0025640A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3D40F2C21C34A8D0025640A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -103,56 +79,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F35D871521D2099100DD446C /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				F35D871321D2098A00DD446C /* NetworkManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		F3BFD25721CEE3670074559C /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				F35D871521D2099100DD446C /* Manager */,
-				F3BFD26021CEE69A0074559C /* Encoding */,
-				F3BFD25B21CEE5100074559C /* Service */,
-				F3BFD25821CEE3770074559C /* EndPoint */,
-				F35D871121D2095100DD446C /* MovieModel.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		F3BFD25821CEE3770074559C /* EndPoint */ = {
-			isa = PBXGroup;
-			children = (
-				F3BFD25921CEE3950074559C /* EndPointProtocol.swift */,
-				F35D870F21D2091300DD446C /* MovieEndPoint.swift */,
-			);
-			path = EndPoint;
-			sourceTree = "<group>";
-		};
-		F3BFD25B21CEE5100074559C /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				F3BFD25C21CEE5280074559C /* HTTPMethod.swift */,
-				F3BFD25E21CEE5B40074559C /* HTTPTask.swift */,
-				F35D870B21D09BFE00DD446C /* NetworkRouter.swift */,
-				F35D870D21D09F5800DD446C /* Router.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		F3BFD26021CEE69A0074559C /* Encoding */ = {
-			isa = PBXGroup;
-			children = (
-				F3BFD26121CEE6A40074559C /* ParameterEncoding.swift */,
-				F3BFD26321CEE7CF0074559C /* URLParameterEncoder.swift */,
-				F35D870921D09B2800DD446C /* JSONParameterEncoder.swift */,
-			);
-			path = Encoding;
-			sourceTree = "<group>";
-		};
 		F3D40F1E21C34A8C0025640A = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +104,6 @@
 				F3D40F4821C3838D0025640A /* Models */,
 				F3D40F4521C3769F0025640A /* Views */,
 				F3D40F4121C3584F0025640A /* Controllers */,
-				F3BFD25721CEE3670074559C /* Networking */,
 				F3D40F4221C358600025640A /* Extentions */,
 				F3D40F3121C34A8E0025640A /* Assets.xcassets */,
 				F3D40F3321C34A8E0025640A /* LaunchScreen.storyboard */,
@@ -196,7 +121,6 @@
 				F3D40F4B21C38C100025640A /* NewProperty.swift */,
 				F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */,
 				F361FBBF21C7139F00395F4C /* Calculate.swift */,
-				F35D871621D2163200DD446C /* TestingNetworkLayer.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -212,7 +136,7 @@
 		F3D40F4521C3769F0025640A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F339EB6721CC5AB100B8D23F /* SearchView.swift */,
+				F339EB6721CC5AB100B8D23F /* MortgageView.swift */,
 				F339EB6921CC617D00B8D23F /* ProfileView.swift */,
 				F3D40F4621C376AE0025640A /* TableViewCell.swift */,
 				F39E074821C4B7E700F3846A /* ValueView.swift */,
@@ -386,27 +310,15 @@
 				F339EB6A21CC617D00B8D23F /* ProfileView.swift in Sources */,
 				F39E074921C4B7E700F3846A /* ValueView.swift in Sources */,
 				F3D40F4721C376AE0025640A /* TableViewCell.swift in Sources */,
-				F3BFD25A21CEE3950074559C /* EndPointProtocol.swift in Sources */,
 				F3D40F4421C3588F0025640A /* PropertiesList.swift in Sources */,
-				F339EB6821CC5AB100B8D23F /* SearchView.swift in Sources */,
-				F3BFD26221CEE6A40074559C /* ParameterEncoding.swift in Sources */,
-				F3BFD26421CEE7CF0074559C /* URLParameterEncoder.swift in Sources */,
+				F339EB6821CC5AB100B8D23F /* MortgageView.swift in Sources */,
 				F3D40F4C21C38C100025640A /* NewProperty.swift in Sources */,
-				F35D870E21D09F5800DD446C /* Router.swift in Sources */,
-				F35D871221D2095100DD446C /* MovieModel.swift in Sources */,
-				F35D871421D2098A00DD446C /* NetworkManager.swift in Sources */,
-				F3BFD25D21CEE5280074559C /* HTTPMethod.swift in Sources */,
 				F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */,
-				F35D871721D2163200DD446C /* TestingNetworkLayer.swift in Sources */,
-				F35D871021D2091300DD446C /* MovieEndPoint.swift in Sources */,
 				F3D40F4A21C384CB0025640A /* property.swift in Sources */,
 				F361FBC021C7139F00395F4C /* Calculate.swift in Sources */,
-				F3BFD25F21CEE5B40074559C /* HTTPTask.swift in Sources */,
 				F3D40F2D21C34A8D0025640A /* Login.swift in Sources */,
 				F3D40F3D21C34FF70025640A /* Constraints-Extention.swift in Sources */,
-				F35D870C21D09BFE00DD446C /* NetworkRouter.swift in Sources */,
 				F3D40F2B21C34A8D0025640A /* AppDelegate.swift in Sources */,
-				F35D870A21D09B2800DD446C /* JSONParameterEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

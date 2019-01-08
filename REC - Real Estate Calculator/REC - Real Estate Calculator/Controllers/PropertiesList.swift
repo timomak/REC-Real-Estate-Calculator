@@ -102,13 +102,13 @@ class PropertiesList: UIViewController {
     }()
 
     // Creating tabBar
-    private let tabBar: UIView = {
+    let tabBar: UIView = {
         let navigationBar = UIView()
         navigationBar.alpha = 0
         return navigationBar
     }()
     
-    private var searchView = SearchView()
+    private var mortgageView = MortgageView()
     private var profileView = ProfileView()
     
     override func viewDidLoad() {
@@ -125,7 +125,7 @@ class PropertiesList: UIViewController {
     @objc func searchButtonPressed() {
         removeAllViews()
         // TODO: Add the search View
-        searchView.loadSelf(superView: view, tabBar: tabBar)
+        mortgageView.loadSelf(superView: view, tabBar: tabBar)
         
         // Kinda animate size change of buttons
         searchButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
@@ -168,7 +168,7 @@ class PropertiesList: UIViewController {
         viewNavbarTitle.removeFromSuperview()
         exportButton.removeFromSuperview()
         tableView.removeFromSuperview()
-        searchView.removeFromSuperview()
+        mortgageView.removeFromSuperview()
         profileView.removeFromSuperview()
         
         // TODO: Remove Search view and Profile view here.
@@ -390,7 +390,7 @@ extension PropertiesList: UITableViewDataSource {
         
         // Set the cell label text
         cell.propertyName.text = properties[indexPath.row].name
-        cell.propertyValue.text = String(properties[indexPath.row].buyingPrice)
+        cell.propertyValue.text = properties[indexPath.row].buyingPrice.formattedWithSeparator
         cell.selectionStyle = UITableViewCell.SelectionStyle.none 
         // Push your cell to the table view
         return cell

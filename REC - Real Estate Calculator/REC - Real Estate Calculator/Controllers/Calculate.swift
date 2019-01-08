@@ -173,11 +173,11 @@ class Calculate: UIViewController {
     func calculate() {
         // Calculating cost per squared foot
         costPerSquareFoot = property.buyingPrice / property.squaredFeet
-        squaredFootCost.text += String(format: "%.2f", costPerSquareFoot)
+        squaredFootCost.text += costPerSquareFoot.formattedWithSeparator
         
         // Calculating Yearly Tax
         totalTax = (property.buildingTax + property.propertyTax) * 12
-        yearlyTax.text += String(format: "%.2f", totalTax)
+        yearlyTax.text += totalTax.formattedWithSeparator
         
         // Calculate Fees
         mothlyFees = property.yearlyFees / 12
@@ -185,20 +185,20 @@ class Calculate: UIViewController {
         // Yearly Rent income
         rentTaxMonthly = property.buildingTax + property.propertyTax
         totalRentPositive = (property.rent - rentTaxMonthly) * 12.00
-        yearlyIncome.text += String(format: "%.2f", totalRentPositive)
+        yearlyIncome.text += totalRentPositive.formattedWithSeparator
         
         
         // Monthly Rent Income
         totalRentMonthly = (property.rent - (rentTaxMonthly + mothlyFees))
-        monthlyIncome.text += String(format: "%.2f", totalRentMonthly)
+        monthlyIncome.text += totalRentMonthly.formattedWithSeparator
         
         // Gross Income
         totalIncome = (property.rent) * 12.00
-        grossIncome.text += String(format: "%.2f", totalIncome)
+        grossIncome.text += totalIncome.formattedWithSeparator
         
         // Yearly Value Growth
         yearlyValueGrowth = property.buyingPrice - (property.buyingPrice * (property.valueGrowth))
-        valueGrowth.text += String(format: "%.2f", yearlyValueGrowth)
+        valueGrowth.text += yearlyValueGrowth.formattedWithSeparator
     }
     
     @objc private func exportButtonPressed() {
