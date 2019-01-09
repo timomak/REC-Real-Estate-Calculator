@@ -104,7 +104,8 @@ class PropertiesList: UIViewController {
     // Creating tabBar
     let tabBar: UIView = {
         let navigationBar = UIView()
-        navigationBar.alpha = 0
+//        navigationBar.alpha = 1
+        navigationBar.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         return navigationBar
     }()
     
@@ -139,7 +140,7 @@ class PropertiesList: UIViewController {
         addCustomNavbar()
         addTableView()
         // Returns: dataProperties
-        if UserDefaults.standard.bool(forKey: "hasProperty") != nil {
+        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
             // Can unwrap an populate property list
             if UserDefaults.standard.dictionary(forKey: "properties") != nil {
                 unwrapDictionary(toUnwrap: UserDefaults.standard.dictionary(forKey: "properties") as! [String : [String : [String : Double]]])
@@ -154,6 +155,8 @@ class PropertiesList: UIViewController {
     
     @objc private func profileButtonPressed() {
         removeAllViews()
+//        profileView.properties.removeAll()
+//        profileView.properties = properties
         profileView.loadSelf(superView: view, tabBar: tabBar)
         
         // Kinda animate size change of buttons
@@ -207,9 +210,17 @@ class PropertiesList: UIViewController {
     }
 
     func addCustomTabar() {
-        // Adding tab bar background
-        view.addSubview(tabBar)
-        tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.bounds.width, height: view.bounds.width / 3))
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // Adding tab bar background
+            view.addSubview(tabBar)
+            tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: view.bounds.width / 3, bottom: 0, right: view.bounds.width / 3), size: .init(width: view.bounds.width, height: view.bounds.height / 12))
+        }else{
+            // Adding tab bar background
+            view.addSubview(tabBar)
+            tabBar.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: view.bounds.width, height: view.bounds.width / 3))
+        }
+        
 
         // Buttons Stack
         let buttonsStack = UIStackView(arrangedSubviews: [searchButton, propertiesButton, profileButton])
@@ -219,7 +230,7 @@ class PropertiesList: UIViewController {
         buttonsStack.spacing = 0
         
         view.addSubview(buttonsStack)
-        buttonsStack.anchor(top: tabBar.topAnchor, leading: tabBar.leadingAnchor, bottom: tabBar.bottomAnchor, trailing: tabBar.trailingAnchor)
+        buttonsStack.anchor(top: tabBar.topAnchor, leading: tabBar.leadingAnchor, bottom: tabBar.bottomAnchor, trailing: tabBar.trailingAnchor, size: .init(width: tabBar.bounds.height, height: tabBar.bounds.height))
     }
     
     func addTableView() {
@@ -390,7 +401,7 @@ extension PropertiesList: UITableViewDataSource {
         
         // Set the cell label text
         cell.propertyName.text = properties[indexPath.row].name
-        cell.propertyValue.text = properties[indexPath.row].buyingPrice.formattedWithSeparator
+        cell.propertyValue.text = "$" + properties[indexPath.row].buyingPrice.formattedWithSeparator
         cell.selectionStyle = UITableViewCell.SelectionStyle.none 
         // Push your cell to the table view
         return cell
@@ -408,6 +419,10 @@ extension PropertiesList: UITableViewDataSource {
             deleteProperty(userId: (Auth.auth().currentUser?.uid)!, propertyToDelete: properties[indexPath.row])
             self.properties.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            if properties.count <= 0 {
+                UserDefaults.standard.set(false, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
+            }
         }
     }
 }

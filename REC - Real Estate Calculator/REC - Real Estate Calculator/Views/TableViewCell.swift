@@ -82,10 +82,10 @@ class PropertyListCell: UITableViewCell {
         propertyName.anchor(top: nil, leading: cellBackground.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
         propertyName.centerVerticalOfView(to: self)
         
-        // Adding Dollar sign in the center of the container
-        addSubview(dollarSingLabel)
-        dollarSingLabel.centerOfView(to: cellBackground)
-        
+//        // Adding Dollar sign in the center of the container
+//        addSubview(dollarSingLabel)
+//        dollarSingLabel.centerOfView(to: cellBackground)
+//        
         // Adding Property Value Label
         addSubview(propertyValue)
         propertyValue.anchor(top: nil, leading: nil, bottom: nil, trailing: cellBackground.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 10))

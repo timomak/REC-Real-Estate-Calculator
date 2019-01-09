@@ -52,7 +52,7 @@ class ValueView: UIView, UITextFieldDelegate {
     // Value Label Scroll View
     private let costValue: UITextView = {
         let textView = UITextView()
-        textView.text = "Cost:"
+        textView.text = "Value:"
         textView.font = UIFont.boldSystemFont(ofSize: 23)
         textView.backgroundColor = nil
         textView.textAlignment = .left

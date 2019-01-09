@@ -98,7 +98,8 @@ class NewProperty: UIViewController {
     
     @objc private func saveButtonPressed() {
         // Save Property
-        
+        UserDefaults.standard.set(true, forKey: "hasProperty")
+        UserDefaults.standard.synchronize()
         // TODO: Add conditional to check if is editing or creating new
         let newProperty = valueView.createPropertyModel()
 //        print(newProperty.getDictionary())
