@@ -75,6 +75,9 @@ class MortgageView: UIView, UITextFieldDelegate {
     private var monthlyCostView: UIView = {
         var view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.7409107685, green: 0.6965670586, blue: 1, alpha: 1)
+        view.layer.cornerRadius = 25
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowRadius = 5
         return view
     }()
     
@@ -95,12 +98,12 @@ class MortgageView: UIView, UITextFieldDelegate {
     // Mortage Amount Input
     private let mortageAmountTextField: UITextField = {
         var textField = UITextField()
-        textField.placeholder = "Mortgage Amount..."
+        textField.placeholder = "100'000"
         textField.font = UIFont.systemFont(ofSize: 18)
         textField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //        textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.keyboardType = UIKeyboardType.default
+        textField.keyboardType = UIKeyboardType.numbersAndPunctuation
         textField.returnKeyType = UIReturnKeyType.default
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
@@ -134,7 +137,7 @@ class MortgageView: UIView, UITextFieldDelegate {
         textField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //        textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.keyboardType = UIKeyboardType.default
+        textField.keyboardType = UIKeyboardType.numbersAndPunctuation
         textField.returnKeyType = UIReturnKeyType.default
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
@@ -168,7 +171,7 @@ class MortgageView: UIView, UITextFieldDelegate {
         textField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //        textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.keyboardType = UIKeyboardType.default
+        textField.keyboardType = UIKeyboardType.numbersAndPunctuation
         textField.returnKeyType = UIReturnKeyType.default
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
@@ -256,18 +259,23 @@ class MortgageView: UIView, UITextFieldDelegate {
         return textView
     }()
     
+    // Choose between the Mortgage options
     var isMonthlyCost = true
     
     // Pretty much ViewDidLoad() but for a view (without a controller)
     func loadSelf(superView: UIView, tabBar: UIView) {
+        isMonthlyCost = true
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         superView.addSubview(self)
         self.anchor(top: superView.topAnchor, leading: superView.leadingAnchor, bottom: tabBar.topAnchor, trailing: superView.trailingAnchor)
+        
         
         addCustomNavbar()
         addMortgageCalculatorChoices()
         
         addMonthlyCostView()
+        calculateMortgageMonthlyCost()
+        
     }
     
     
@@ -295,31 +303,34 @@ class MortgageView: UIView, UITextFieldDelegate {
         
         addSubview(buttonsStack)
         
-        buttonsStack.anchor(top: navbar.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 40, left: 20, bottom: 0, right: 20))
+        buttonsStack.anchor(top: navbar.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
     }
     
     func addMonthlyCostView() {
         addSubview(monthlyCostView)
         
         // adding underline for the two options
+        underline.removeFromSuperview()
+        
         monthlyCostView.addSubview(underline)
+        
         underline.anchor(top: monthlyCostButton.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: monthlyCostButton.trailingAnchor, size: .init(width: 0, height: 5))
         
         // Mortage Amount Label
         monthlyCostView.addSubview(mortageAmountLabel)
-        mortageAmountLabel.anchor(top: underline.topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 25, left: 10, bottom: 0, right: 0))
+        mortageAmountLabel.anchor(top: monthlyCostButton.topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 55, left: 20, bottom: 0, right: 0))
         
         // Adding Dollar Sign
         monthlyCostView.addSubview(dollarSignLabel)
-        dollarSignLabel.anchor(top: mortageAmountLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
+        dollarSignLabel.anchor(top: mortageAmountLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 15, bottom: 0, right: 0))
         
         // Mortgage Amount Input
         monthlyCostView.addSubview(mortageAmountTextField)
-        mortageAmountTextField.anchor(top: mortageAmountLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 7, left: 40, bottom: 0, right: 0))
+        mortageAmountTextField.anchor(top: mortageAmountLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 7, left: 45, bottom: 0, right: 0))
         mortageAmountTextField.delegate = self
         // Underline for Mortgage Amount
         monthlyCostView.addSubview(amountLabelUnderline)
-        amountLabelUnderline.anchor(top: mortageAmountTextField.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 2))
+        amountLabelUnderline.anchor(top: mortageAmountTextField.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 15, bottom: 0, right: 15), size: .init(width: 0, height: 2))
         
         // Stack View for Interest Rate and Maximum Loan
         let stack = UIStackView(arrangedSubviews: [interestRateLabel, mortgagePeriodLabel])
@@ -329,25 +340,25 @@ class MortgageView: UIView, UITextFieldDelegate {
         stack.spacing = 0
         addSubview(stack)
         
-        stack.anchor(top: amountLabelUnderline.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 30, left: 10, bottom: 0, right: 10))
+        stack.anchor(top: amountLabelUnderline.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 30, left: 15, bottom: 0, right: 15))
         
         // Making the interest rate first
         monthlyCostView.addSubview(interestRateTextField)
-        interestRateTextField.anchor(top: stack.bottomAnchor, leading: interestRateLabel.leadingAnchor, bottom: nil, trailing: interestRateLabel.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 0))
+        interestRateTextField.anchor(top: stack.bottomAnchor, leading: interestRateLabel.leadingAnchor, bottom: nil, trailing: interestRateLabel.trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 0))
         interestRateTextField.delegate = self
         monthlyCostView.addSubview(rateLabelUnderline)
-        rateLabelUnderline.anchor(top: interestRateTextField.bottomAnchor, leading: interestRateLabel.leadingAnchor, bottom: nil, trailing: interestRateLabel.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 10), size: .init(width: 0, height: 2))
+        rateLabelUnderline.anchor(top: interestRateTextField.bottomAnchor, leading: interestRateLabel.leadingAnchor, bottom: nil, trailing: interestRateLabel.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 10), size: .init(width: 0, height: 2))
         
         // Making Period Second
         monthlyCostView.addSubview(mortgagePeriodTextField)
-        mortgagePeriodTextField.anchor(top: stack.bottomAnchor, leading: interestRateTextField.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 0))
+        mortgagePeriodTextField.anchor(top: stack.bottomAnchor, leading: interestRateTextField.trailingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 5))
         mortgagePeriodTextField.delegate = self
         
         monthlyCostView.addSubview(periodLabelUnderline)
-        periodLabelUnderline.anchor(top: mortgagePeriodTextField.bottomAnchor, leading: mortgagePeriodTextField.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 10), size: .init(width: 0, height: 2))
+        periodLabelUnderline.anchor(top: mortgagePeriodTextField.bottomAnchor, leading: mortgagePeriodTextField.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 15), size: .init(width: 0, height: 2))
         
         // Adding the background
-        monthlyCostView.anchor(top: underline.bottomAnchor, leading: leadingAnchor, bottom: periodLabelUnderline.bottomAnchor, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: -30, right: 0))
+        monthlyCostView.anchor(top: monthlyCostButton.bottomAnchor, leading: leadingAnchor, bottom: periodLabelUnderline.bottomAnchor, trailing: trailingAnchor, padding: .init(top: 20, left: 10, bottom: -30, right: 10))
         
         // Stack View for total cost of mortgage
         let stackTotalMortgage = UIStackView(arrangedSubviews: [totalMortgageCostLabel, totalMortgageCostOutputLabel])
@@ -355,9 +366,9 @@ class MortgageView: UIView, UITextFieldDelegate {
         stackTotalMortgage.distribution = .fillEqually
         stackTotalMortgage.axis = .horizontal
         stackTotalMortgage.spacing = 0
-        monthlyCostView.addSubview(stackTotalMortgage)
+        addSubview(stackTotalMortgage)
         
-        stackTotalMortgage.anchor(top: monthlyCostView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        stackTotalMortgage.anchor(top: monthlyCostView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 0))
         
         // Stack View for monthly payments
         let stackMonthlyPayments = UIStackView(arrangedSubviews: [monthlyPaymentsLabel, monthlyPaymentsOutputLabel])
@@ -365,40 +376,79 @@ class MortgageView: UIView, UITextFieldDelegate {
         stackMonthlyPayments.distribution = .fillEqually
         stackMonthlyPayments.axis = .horizontal
         stackMonthlyPayments.spacing = 0
-        monthlyCostView.addSubview(stackMonthlyPayments)
+        addSubview(stackMonthlyPayments)
         
-        stackMonthlyPayments.anchor(top: stackTotalMortgage.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        stackMonthlyPayments.anchor(top: stackTotalMortgage.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 10, left: 10, bottom: 0, right: 0))
     }
     
     // Function that runs when Maximum Loan Button is tapped
     @objc func maximumLoanButtonTapped() {
-        monthlyCostView.removeFromSuperview()
+        isMonthlyCost = false
         
-        // Add Maximum Loan
+        // Changing the underline position to indicate the change is section
+        underline.removeFromSuperview()
+        addSubview(underline)
+        underline.anchor(top: maximumLoanButton.bottomAnchor, leading: maximumLoanButton.leadingAnchor, bottom: nil, trailing: trailingAnchor, size: .init(width: 0, height: 5))
+        
+        // Changing the text
+        mortageAmountLabel.text = "Monthly payments"
+        mortageAmountTextField.placeholder = "1000"
+        monthlyPaymentsLabel.text = "You could borrow"
+        
+        calculateMortgageMonthlyCost()
     }
     
     // Function that runs when MonthlyCostButton is tapped
     @objc func monthlyCostButtonTapped() {
-        // Remove Maximum Loan
+        isMonthlyCost = true
         
-        addMonthlyCostView()
+        // Changing the underline position to indicate the change is section
+        underline.removeFromSuperview()
+        addSubview(underline)
+        underline.anchor(top: monthlyCostButton.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: monthlyCostButton.trailingAnchor, size: .init(width: 0, height: 5))
+        
+        // Changing the text
+        mortageAmountLabel.text = "Mortgage amount"
+        mortageAmountTextField.placeholder = "100'000"
+        monthlyPaymentsLabel.text = "Monthly payments"
+        
+        calculateMortgageMonthlyCost()
     }
     
     // Calculate Mortgage Monthly cost
     private func calculateMortgageMonthlyCost() {
-        let amount = Double(mortageAmountTextField.text!) ?? 0
-        let rate = Double(interestRateTextField.text!) ?? 3.875
-        let period = Double(mortgagePeriodTextField.text!) ?? 10
-        
-        let periodInMonths = period * 12
-        let monthlyRate = (rate / 100) / 12
-        
-        let monthlyPaymentsOutput = ((monthlyRate * (pow(1 + monthlyRate, periodInMonths))) / (pow(1 + monthlyRate, periodInMonths) - 1)) * amount
-        
-        let totalCostMortgage = (monthlyRate * periodInMonths * amount) / (1 - (pow(1 + monthlyRate, -1 * periodInMonths)))
-        
-        totalMortgageCostOutputLabel.text = "$" +  totalCostMortgage.formattedWithSeparator
-        monthlyPaymentsOutputLabel.text = "$" +  monthlyPaymentsOutput.formattedWithSeparator
+        if isMonthlyCost == true {
+            let amount = Double(mortageAmountTextField.text!) ?? 100000
+            let rate = Double(interestRateTextField.text!) ?? 3.875
+            let period = Double(mortgagePeriodTextField.text!) ?? 10
+            
+            let periodInMonths = period * 12
+            let monthlyRate = (rate / 100) / 12
+            
+            let monthlyPaymentsOutput = ((monthlyRate * (pow(1 + monthlyRate, periodInMonths))) / (pow(1 + monthlyRate, periodInMonths) - 1)) * amount
+            
+            let totalCostMortgage = (monthlyRate * periodInMonths * amount) / (1 - (pow(1 + monthlyRate, -1 * periodInMonths)))
+            
+            totalMortgageCostOutputLabel.text = "$" +  totalCostMortgage.formattedWithSeparator
+            monthlyPaymentsOutputLabel.text = "$" +  monthlyPaymentsOutput.formattedWithSeparator
+            
+        } else {
+            // If we're dealing with Maximum Loan
+            let amount = Double(mortageAmountTextField.text!) ?? 1000
+            let rate = Double(interestRateTextField.text!) ?? 3.875
+            let period = Double(mortgagePeriodTextField.text!) ?? 10
+            
+            let periodInMonths = period * 12
+            let monthlyRate = (rate / 100) / 12
+            
+            
+            let borrowPotential = amount / ((monthlyRate * (pow(1 + monthlyRate, periodInMonths))) / (pow(1 + monthlyRate, periodInMonths) - 1))
+            
+            let totalCostMortgage = (monthlyRate * periodInMonths * borrowPotential) / (1 - (pow(1 + monthlyRate, -1 * periodInMonths)))
+            
+            totalMortgageCostOutputLabel.text = "$" +  totalCostMortgage.formattedWithSeparator
+            monthlyPaymentsOutputLabel.text = "$" +  borrowPotential.formattedWithSeparator
+        }
     }
     
     
