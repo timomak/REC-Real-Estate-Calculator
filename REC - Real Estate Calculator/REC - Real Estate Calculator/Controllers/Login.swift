@@ -91,8 +91,18 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 //        print("Button pressed")
         // Present Next View
         if isSignedIn == true {
-            let newViewController = PropertiesList()
-            self.present(newViewController, animated: true)
+            if UserDefaults.standard.integer(forKey: "numberOfUses") == 1 {
+                print("Not the first time.", UserDefaults.standard.bool(forKey: "firstTime"))
+                let newViewController = PropertiesList()
+                self.present(newViewController, animated: true)
+            }
+            else {
+                print("First time.")
+                let layout = UICollectionViewFlowLayout()
+                layout.scrollDirection = .horizontal
+                let newViewController = SwipingController(collectionViewLayout: layout)
+                self.present(newViewController, animated: true)
+            }
         }
     }
     

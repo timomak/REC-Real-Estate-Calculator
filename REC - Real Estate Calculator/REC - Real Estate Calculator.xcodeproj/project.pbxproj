@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F27A5855C00793963A5A30B /* Pods_REC___Real_Estate_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */; };
+		F30D555921EBBC2B00D51DB7 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D555821EBBC2B00D51DB7 /* Onboarding.swift */; };
 		F339EB6821CC5AB100B8D23F /* MortgageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6721CC5AB100B8D23F /* MortgageView.swift */; };
 		F339EB6A21CC617D00B8D23F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F339EB6921CC617D00B8D23F /* ProfileView.swift */; };
 		F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */; };
@@ -30,6 +31,7 @@
 		2252DBE5786F32EF2791A875 /* Pods_REC___Real_Estate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_REC___Real_Estate_Calculator.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8EC0F085C01E4FB39C6C1 /* Pods-REC - Real Estate Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		DA89CEB862A87692656CB044 /* Pods-REC - Real Estate Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REC - Real Estate Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REC - Real Estate Calculator/Pods-REC - Real Estate Calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		F30D555821EBBC2B00D51DB7 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		F339EB6721CC5AB100B8D23F /* MortgageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageView.swift; sourceTree = "<group>"; };
 		F339EB6921CC617D00B8D23F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProperty.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D40F2C21C34A8D0025640A /* Login.swift */,
+				F30D555821EBBC2B00D51DB7 /* Onboarding.swift */,
 				F3D40F4321C3588F0025640A /* PropertiesList.swift */,
 				F3D40F4B21C38C100025640A /* NewProperty.swift */,
 				F360BA3A21C5BEF000C5FDF4 /* EditProperty.swift */,
@@ -316,6 +319,7 @@
 				F360BA3B21C5BEF000C5FDF4 /* EditProperty.swift in Sources */,
 				F3D40F4A21C384CB0025640A /* property.swift in Sources */,
 				F361FBC021C7139F00395F4C /* Calculate.swift in Sources */,
+				F30D555921EBBC2B00D51DB7 /* Onboarding.swift in Sources */,
 				F3D40F2D21C34A8D0025640A /* Login.swift in Sources */,
 				F3D40F3D21C34FF70025640A /* Constraints-Extention.swift in Sources */,
 				F3D40F2B21C34A8D0025640A /* AppDelegate.swift in Sources */,
